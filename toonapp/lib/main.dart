@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:toonapp/widgets/button.dart';
-import 'package:toonapp/widgets/currency_card.dart';
+import 'package:toonapp/screens/home_screen.dart';
 
 void main() {
   runApp(const App());
@@ -167,6 +164,135 @@ void main() {
 //   }
 // }
 
+// StattefulWideget 학습
+// class App extends StatefulWidget {
+//   const App({super.key});
+
+//   @override
+//   State<App> createState() => _AppState();
+// }
+
+// class _AppState extends State<App> {
+//   int counter = 0;
+
+//   bool showtitle = true;
+
+//   List<int> numbers = [];
+
+//   void onClicked() {
+//     setState(() {
+//       counter = counter + 1;
+//     });
+//   }
+
+//   void resetClicked() {
+//     setState(() {
+//       numbers = [];
+//       counter = 0;
+//     });
+//   }
+
+//   void onClicked2() {
+//     setState(() {
+//       numbers.add(numbers.length);
+//     });
+//   }
+
+//   void toggleTitle() {
+//     setState(() {
+//       showtitle = !showtitle;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       theme: ThemeData(
+//         textTheme: const TextTheme(
+//           titleLarge: TextStyle(
+//             color: Colors.red,
+//           ),
+//         ),
+//       ),
+//       home: Scaffold(
+//         backgroundColor: const Color(0xFFF4EDDB),
+//         body: Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               const Text(
+//                 'Click Count',
+//                 style: TextStyle(
+//                   fontSize: 30,
+//                 ),
+//               ),
+//               Text('$counter'),
+//               for (var n in numbers) Text('$n'),
+//               showtitle ? const MyLargeTitle() : const Text('notinh'),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   IconButton(
+//                       iconSize: 40,
+//                       onPressed: onClicked,
+//                       icon: const Icon(Icons.add_box_rounded)),
+//                   IconButton(
+//                       iconSize: 40,
+//                       onPressed: onClicked2,
+//                       icon: const Icon(Icons.list)),
+//                   IconButton(
+//                       iconSize: 40,
+//                       onPressed: resetClicked,
+//                       icon: const Icon(Icons.restore)),
+//                   IconButton(
+//                       iconSize: 40,
+//                       onPressed: toggleTitle,
+//                       icon: const Icon(Icons.remove_red_eye)),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class MyLargeTitle extends StatefulWidget {
+//   const MyLargeTitle({
+//     super.key,
+//   });
+
+//   @override
+//   State<MyLargeTitle> createState() => _MyLargeTitleState();
+// }
+
+// class _MyLargeTitleState extends State<MyLargeTitle> {
+//   bool showtitle = true;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     print('initState!');
+//   }
+
+//   @override
+//   void dispose() {
+//     super.dispose();
+//     print('dispose!');
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     print('build');
+//     return Text(
+//       'My Large Title',
+//       style: TextStyle(
+//           fontSize: 30, color: Theme.of(context).textTheme.titleLarge?.color),
+//     );
+//   }
+// }
+
 class App extends StatefulWidget {
   const App({super.key});
 
@@ -175,122 +301,21 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  int counter = 0;
-
-  bool showtitle = true;
-
-  List<int> numbers = [];
-
-  void onClicked() {
-    setState(() {
-      counter = counter + 1;
-    });
-  }
-
-  void resetClicked() {
-    setState(() {
-      numbers = [];
-      counter = 0;
-    });
-  }
-
-  void onClicked2() {
-    setState(() {
-      numbers.add(numbers.length);
-    });
-  }
-
-  void toggleTitle() {
-    setState(() {
-      showtitle = !showtitle;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+          backgroundColor: const Color(0xFFE7626C),
+        ),
         textTheme: const TextTheme(
-          titleLarge: TextStyle(
-            color: Colors.red,
+          displayLarge: TextStyle(
+            color: Color(0xFF232B55),
           ),
         ),
+        cardColor: const Color(0xFFF4EDDB),
       ),
-      home: Scaffold(
-        backgroundColor: const Color(0xFFF4EDDB),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Click Count',
-                style: TextStyle(
-                  fontSize: 30,
-                ),
-              ),
-              Text('$counter'),
-              for (var n in numbers) Text('$n'),
-              showtitle ? const MyLargeTitle() : const Text('notinh'),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                      iconSize: 40,
-                      onPressed: onClicked,
-                      icon: const Icon(Icons.add_box_rounded)),
-                  IconButton(
-                      iconSize: 40,
-                      onPressed: onClicked2,
-                      icon: const Icon(Icons.list)),
-                  IconButton(
-                      iconSize: 40,
-                      onPressed: resetClicked,
-                      icon: const Icon(Icons.restore)),
-                  IconButton(
-                      iconSize: 40,
-                      onPressed: toggleTitle,
-                      icon: const Icon(Icons.remove_red_eye)),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyLargeTitle extends StatefulWidget {
-  const MyLargeTitle({
-    super.key,
-  });
-
-  @override
-  State<MyLargeTitle> createState() => _MyLargeTitleState();
-}
-
-class _MyLargeTitleState extends State<MyLargeTitle> {
-  bool showtitle = true;
-
-  @override
-  void initState() {
-    super.initState();
-    print('initState!');
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    print('dispose!');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    print('build');
-    return Text(
-      'My Large Title',
-      style: TextStyle(
-          fontSize: 30, color: Theme.of(context).textTheme.titleLarge?.color),
+      home: const HomeScreen(),
     );
   }
 }
