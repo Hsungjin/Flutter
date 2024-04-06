@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toonapp/screens/home_screen.dart';
 import 'package:toonapp/screens/webhome_screen.dart';
-import 'package:toonapp/services/api_service.dart';
 
 void main() {
   runApp(const App());
