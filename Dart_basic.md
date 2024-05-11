@@ -1,4 +1,3 @@
-
 # What is Dart?
 Dart 는 고급 프로그래밍 언어이다.
 
@@ -115,5 +114,53 @@ void main() {
   int num5 = 10;
 
   print((num4 ?? 0) + num5);
+}
+```
+
+### 클래스
+- 클래스는 일종의 객체를 만들기 위한 템플릿
+- 클래스를 활용하면 일종의 데이터와 코드를 그룹화해서 관련 코드를 같이 유지하고, 객체를 쉽게 만들어 객체지향 프로그래밍을 효과적으로 활용할 수 있음
+
+#### Class의 구성요소
+- 필드 : 클래스 내부에 선언된 데이터 ( 변수 / 상수 등)
+- 메서드 : 클래스 내부에 선언 된 기능 ( 함수 )
+- 생성자 : 클래스 인스턴스를 생성할 때 사용되는 코드, 생성 시 특정 작업을 지시하는 등의 활용이 가능
+
+### 생성자 Constructor
+- 클래스의 인스턴스를 생성하는데 사용되는 코드
+- 생성자를 통해 매개변수를 전달하거나 클래스 내 필드의 초기값을 설정하는 등의 작업을 할 수 있음.
+
+#### 생성자의 종류
+- Default constructors : 기본 생성자로, 생성자를 선언하지 않을 경우 제공되는 생성자.
+- Named constructors : 개발자가 필요에 의해 생성한 생성자로, 클래스에 대한 여러 생성자를 구현하거나 추가적인 클래스의 명확성을 제공
+- Redirecting constructors : 목적이 동일한 생성자로 전달하기 위한 생성자로, 생성자의 본문은 비어 있지만, 전달 된 생성자에 대한 초기값 등을 구현할 때 활용
+- Const constructors : 상수 생성자로, 클래스가 불변의 객체를 생성하는 경우 활용
+- Factory constructors :  매번 새로운 인스턴스를 만들지 않는 생성자를 활용할 때 사용, 이미 존재하는 인스턴스를 반환하거나, 단순한 초기값을 부여가 아닌 연산이 필요한 객체 생성 시 활용
+
+```dart
+void main() {
+  Point point = Point(1, 2);
+  print(point);
+  print(point.x);
+  print(point.y);
+
+  Point aPoint = Point(2, 5);
+  Point bPoint = Point(10, 4);
+
+  print(aPoint.x);
+  print(aPoint.y);
+
+  print(bPoint.x);
+  print(bPoint.y);
+}
+
+// 클래스
+// 클래스 기초
+// 명명 생성자
+class Point {
+  double x;
+  double y;
+
+  Point(this.x, this.y);
 }
 ```
