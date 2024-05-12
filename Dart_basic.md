@@ -164,3 +164,256 @@ class Point {
   Point(this.x, this.y);
 }
 ```
+
+### 함수 / 메서드
+
+```dart
+void main() {
+  // 함수 / 메서드
+  // 프그래밍에서 가장 기본이 되는 단위 중 하나.
+  // 동작에 대한 단위
+  //
+  // 리턴 타입 함수명 (매개변수) {
+  //   함수내 동작 할 코드
+  // }
+  int num1 = 10;
+  int num2 = 20;
+
+  int sum = add(num1, num2);
+
+  print(sum);
+}
+
+int add(int num1, int num2) {
+  return num1 + num2;
+}
+```
+
+### 분기문과 반복문
+
+```dart
+void main() {
+  // 분기문과 반복문
+  // 분기문 : 프로그램이 특정한 상황에 일을 할지 / 하지 않고 넘길지
+  // if / else || switch
+
+  // if 문 / if - else 문
+  // if(조건식) {
+  //  조건이 참일 경우 실행 할 코드
+  // }
+  // else if(조건식2) {
+  //  맨 처음 조건식이 거짓이지만, 조건식 2가 참일 경우 실행할 코드
+  // } else {
+  //  조건식이 거짓일 경우 실행할 코드
+  // }
+
+  bool isTrue = true;
+  String text = 'Hello';
+  bool trigger = 10 > 20;
+
+  if (isTrue) {
+    print("True");
+  }
+
+  if (text == 'Hello') {
+    print("String True");
+  }
+
+  if (trigger) {
+    print("Trigger True");
+  } else {
+    print('Trigger False');
+  }
+
+  int standard = 3;
+
+  if (standard < 0) {
+    print("여기는 찍히지 않은거에요.");
+  } else if (standard == 3) {
+    print("여기는 찍히겠죠");
+  } else {
+    print("모두 거짓입니다.");
+  }
+
+  /// switch 문
+  /// Flutter 3.10 / Dart 3.0 버전 이상부터 변경 된 부분이 조금 있는 분법 중 하나
+  /// 예시는 3.10 / 3.0 버전 기준으로 설명
+  /// 중간 구버전(3.7 버전 이하)에서 사용하는 방법도 사용 예정
+  ///
+  /// switch (비교대상) {
+  ///   case (조건식1) :
+  ///   case (조건식2) :
+  ///   case (조건식3) :
+  ///   case (조건식4) :
+  ///   default :
+  /// }
+  ///
+
+  int num = 101;
+
+  switch (num) {
+    case 1:
+      print("1");
+    //break; 생략가능
+    case 2:
+      print("2");
+      break;
+    case 3:
+      print("3");
+      break;
+    case 4:
+      print("4");
+      break;
+    case 5:
+      print("5");
+      break;
+    case > 100:
+      print("Wow big number! $num");
+    // Only Upper Dart 3.0
+    default:
+      print("default");
+      break;
+  }
+
+  /// 반복문 : 특정한 코드의 반복을 컴퓨터에게 지시 할 때 사용하는 프로그래밍 문법
+  /// for / for in / while / do - while
+  /// continue / break
+  ///
+  /// for (기준 변수; 조건식; 가변치) {
+  ///   조건식이 참 일 때 반복할 코드
+  /// }
+  ///
+  for (int i = 0; i < 10; i++) {
+    print('Running For Index $i');
+  }
+
+  /// for (단일 변수 in 컬렉션 (List / Set / Map)) {
+  ///   컬렉션 내의 요소(Element)의 수 / 변수 만큼 사용 될 반복문
+  /// }
+  ///
+  List<int> indexs = [0, 1, 2, 3, 4, 5];
+
+  for (final index in indexs) {
+    print('Running for in $index');
+  }
+
+  /// while (조건식) {
+  ///   조선식이 참일 경우 반복될 내용
+  /// }
+  ///
+
+  bool isRunning = true;
+  int count = 0;
+
+  while (isRunning) {
+    if (count >= 5) {
+      isRunning = false;
+    }
+
+    print('While is Running with $count');
+    count += 1;
+  }
+
+  /// do - while
+  /// do {
+  ///   선행 진행 될 코드
+  /// } while (조건);
+  ///
+
+  int num2 = 0;
+  do {
+    num2++;
+
+    if (num2 == 4) {
+      continue;
+    }
+
+    print('Running Do While $num2');
+  } while (num2 < 10);
+}
+```
+
+
+### 예외처리
+
+```dart
+void main() {
+  /// 예외처리 : 프로그램이 진행 중 일때, 의도하였거나 의도하지 않은 상황에 대해서
+  /// 프로그램적으로 오류가 발생했을 때, 대처하는 방법.
+  /// try - catch : 가장 기본적인 예외처리문 / 많이 쓰이는 예외처리 문이기도 함.
+  /// finally
+  /// on
+  /// throw / rethrow
+
+  int num1 = 10;
+  try {
+    // 예외가 발생할 것으로 예상되는 코드
+    print(10 ~/ 0);
+  } catch (error, stack) {
+    /// 에외가 발생했을 때 실행하고자 하는 코드
+    print(error);
+    print(stack);
+  } finally {
+    // 예외가 발생 했던, 하지 않았던, try 문 / catch 문 이후에 실행하고자 하는 코드
+    print("예외처리 문을 지나쳤습니다.");
+  }
+
+  try {
+    print(10 ~/ 0);
+  } on UnsupportedError catch (error, stack) {
+    print('여기는 on 관련 에러 처리');
+    print('~/ 해당 연산자는 0 으로 나눌 수 없습니다.');
+  } on TypeError catch (error, stack) {
+    print('Null 값이 감지되었습니다.');
+  } catch (error, stack) {
+    print('모르는 에러가 발생했습니다.');
+  }
+
+  try {
+    throw Exception('Unknown Error');
+  } catch (error, stack) {
+    print('throw 관련 에러처리 문');
+    // rethrow;
+  }
+
+  print(num1 ~/ 3);
+}
+
+```
+
+### 비동기 프로그래밍
+
+```dart
+void main() {
+  /// 비동기 프로그래밍
+  /// 동기성 / 비동기성
+  /// 동기 : 모든 코드가 순차적으로 진행되는 형태
+  /// 비동기 : 코드가 동시다발적으로 실행돼서, 순차적으로 보장하지않는 형태
+
+  /// async / await / Future : 1회만 응답을 돌려받는 경우
+  Future<void> todo(int seconds) async {
+    await Future.delayed(Duration(seconds: seconds));
+    print('TODO Done in $seconds seconds');
+  }
+
+  todo(3);
+  todo(1);
+  todo(5);
+
+  /// async* / yield / Stream : 지속적으로 응답을 돌려받는 경우
+  Stream<int> todo2() async* {
+    int counter = 0;
+
+    while (counter <= 10) {
+      counter++;
+      await Future.delayed(Duration(seconds: 1));
+      print('TODO is Running $counter');
+      yield counter;
+    }
+
+    print('TODO is Done');
+  }
+
+  todo2().listen((event) {});
+}
+```
