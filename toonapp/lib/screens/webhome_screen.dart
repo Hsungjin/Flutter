@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:toonapp/models/webtoon.dart';
 import 'package:toonapp/services/api_service.dart';
 import 'package:toonapp/widgets/webtoon_widget.dart';
