@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/dart_programming/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_programming/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_programming/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_rps_game/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_rps_game/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_rps_game/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/build" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/ios/.symlinks/plugins/path_provider_foundation/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/ios/.symlinks/plugins/path_provider_foundation/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/ios/.symlinks/plugins/path_provider_foundation/build" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/ios/.symlinks/plugins/path_provider_foundation/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/ios/.symlinks/plugins/path_provider_foundation/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/ios/.symlinks/plugins/path_provider_foundation/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/build" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/build" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/insta_clone/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/part2_rsp_game/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/part2_rsp_game/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/part2_rsp_game/build" />
+      <excludeFolder url="file://$MODULE_DIR$/shake_app/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/shake_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/shake_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/build" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
+  </component>
+</module>
