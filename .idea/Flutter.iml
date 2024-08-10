@@ -78,9 +78,19 @@
       <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/toonapp/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/fastcampus/part3_chapter2_ttoss-example-ttoss_mvp/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/fastcampus/part3_chapter2_ttoss-example-ttoss_mvp/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/fastcampus/part3_chapter2_ttoss-example-ttoss_mvp/build" />
+      <excludeFolder url="file://$MODULE_DIR$/image_picker/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/image_picker/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/image_picker/build" />
+      <excludeFolder url="file://$MODULE_DIR$/screenshot_prevent/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/screenshot_prevent/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/screenshot_prevent/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>
