@@ -8,9 +8,11 @@ class LogoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Logout')),
-      body: ElevatedButton(
-        onPressed: AuthProvider.instance.logout,
-        child: const Text('Logout'),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: AuthProvider.instance.logout,
+          child: const Text('Logout'),
+        ),
       ),
     );
   }

@@ -48,13 +48,13 @@ class ScaffoldWithNavBar extends StatelessWidget {
 
     switch (index) {
       case 1:
-        GoRouter.of(context).push('/play');
+        GoRouter.of(context).go('/play');
       case 2:
-        GoRouter.of(context).push('/setting');
+        GoRouter.of(context).go('/setting');
       case 3:
-        GoRouter.of(context).push('/user');
+        GoRouter.of(context).go('/user');
       default:
-        GoRouter.of(context).push('/home');
+        GoRouter.of(context).go('/home');
     }
   }
 }

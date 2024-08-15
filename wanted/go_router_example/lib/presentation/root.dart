@@ -21,7 +21,12 @@ class RootScreen extends StatelessWidget {
             ),
             ElevatedButton(
               child: const Text('Go To NormalRouter Example'),
-              onPressed: () => context.push('/normal'),
+              // onPressed: () => context.push('/normal'),
+              // onPressed: () => context.pushNamed('Normal'),
+              onPressed: () async {
+                await context.push('/normal');
+                print('Pop Normal Screen');
+              },
             ),
             ElevatedButton(
               child: const Text('Go To Auth Redirect Example'),

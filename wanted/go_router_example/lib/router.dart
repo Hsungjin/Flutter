@@ -26,37 +26,51 @@ final GoRouter router = GoRouter(
           ShellRoute(
             navigatorKey: _shellNaviKey,
             builder: (context, state, child) {
+              print(child);
               return ScaffoldWithNavBar(child: child);
             },
             routes: <RouteBase>[
               GoRoute(
                 path: 'home',
                 builder: (context, state) {
+                  print(state.path);
                   return const ShellHomeScreen();
                 },
               ),
               GoRoute(
                 path: 'play',
                 builder: (context, state) {
+                  print(state.path);
+
                   return const ShellPlayScreen();
                 },
               ),
               GoRoute(
                 path: 'setting',
                 builder: (context, state) {
+                  print(state.path);
+
                   return const ShellSettingScreen();
                 },
               ),
               GoRoute(
                 path: 'user',
                 builder: (context, state) {
+                  print(state.path);
                   return const ShellUserScreen();
                 },
               ),
             ],
           )
         ]),
-    GoRoute(path: '/normal', builder: (context, state) => const NormalScreen()),
+    GoRoute(
+        path: '/normal',
+        name: 'Normal',
+        builder: (context, state) {
+          print(state.name);
+          print(state.matchedLocation);
+          return NormalScreen();
+        }),
     GoRoute(
       path: '/auth',
       builder: (context, state) => const LoginScreen(),
@@ -75,10 +89,8 @@ final GoRouter router = GoRouter(
         } else {
           redirectPath = '/auth';
         }
-
         return redirectPath;
       },
-
     ),
   ],
 );
