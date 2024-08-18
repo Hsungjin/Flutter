@@ -38,7 +38,7 @@ final GoRouter router = GoRouter(
                 },
               ),
               GoRoute(
-                path: 'play',
+                path: 'play',  
                 builder: (context, state) {
                   print(state.path);
 
