@@ -8,13 +8,47 @@ final bankAccountKakao = BankAccount(bankKakao, 500000000);
 final bankAccountToss = BankAccount(bankTtoss, 700000000, accountTypeName: '입출금통장');
 
 main() {
-  print('text');
+  // print(bankAccounts[3].accountTypeName);
+
+  // for (final item in bankAccounts) {
+  //   print(item.accountTypeName);
+  // }
+
+  final shinhankBank = bankMap["shinhan1"];
+  print(shinhankBank == bankAccountShinhan1);
+
+  for(final entry in bankMap.entries) {
+    entry.key;
+    entry.value;
+  }
+
+  bankSet.contains(bankAccountShinhan1);
+
+  bankAccounts.toSet();
+
+  bankSet.toList();
 }
 
+// List
 final List<BankAccount> bankAccounts = [
   bankAccountShinhan1,
   bankAccountShinhan2,
   bankAccountShinhan3,
   bankAccountKakao,
   bankAccountToss,
-]
+];
+
+// Map
+final bankMap = {
+  "shinhan1" : bankAccountShinhan1,
+  "shinhan2" : bankAccountShinhan2,
+};
+
+//Set
+final bankSet = {
+  bankAccountShinhan1,
+  bankAccountShinhan2,
+  bankAccountShinhan3,
+  bankAccountKakao,
+  bankAccountToss,
+};
