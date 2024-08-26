@@ -111,6 +111,7 @@ flutter:
     - assets/image/flag/
     - assets/image/splash/
     - assets/image/darkmode/
+    - assets/image/bank/
     - assets/translations/
     - assets/
 

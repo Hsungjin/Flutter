@@ -36,6 +36,16 @@ final List<BankAccount> bankAccounts = [
   bankAccountShinhan3,
   bankAccountKakao,
   bankAccountToss,
+  bankAccountShinhan1,
+  bankAccountShinhan2,
+  bankAccountShinhan3,
+  bankAccountKakao,
+  bankAccountToss,
+  bankAccountShinhan1,
+  bankAccountShinhan2,
+  bankAccountShinhan3,
+  bankAccountKakao,
+  bankAccountToss,
 ];
 
 // Map
@@ -46,6 +56,16 @@ final bankMap = {
 
 //Set
 final bankSet = {
+  bankAccountShinhan1,
+  bankAccountShinhan2,
+  bankAccountShinhan3,
+  bankAccountKakao,
+  bankAccountToss,
+  bankAccountShinhan1,
+  bankAccountShinhan2,
+  bankAccountShinhan3,
+  bankAccountKakao,
+  bankAccountToss,
   bankAccountShinhan1,
   bankAccountShinhan2,
   bankAccountShinhan3,
