@@ -20,4 +20,20 @@ class SearchStockData extends GetxController {
     final jsonList = await LocalJson.getObjectList<SimpleStock>("json/stock_list.json");
     stocks.addAll(jsonList);
   }
+  
+  void search(String keyword) {
+    if (keyword.isEmpty) {
+      autoCompleteList.clear();
+      return;
+    }
+    autoCompleteList.value = stocks.where((element) => element.name.contains(keyword)).toList();
+  }
+
+  void addHistory(SimpleStock stock) {
+    searchHistrotyList.add(stock.name);
+  }
+
+  void removeHistory(String stockName) {
+    searchHistrotyList.remove(stockName);
+  }
 }
