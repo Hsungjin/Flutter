@@ -7,6 +7,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 class TtossAppBar extends StatefulWidget {
   static const double appBarHeight = 60;
+
   const TtossAppBar({super.key});
 
   @override
@@ -15,6 +16,7 @@ class TtossAppBar extends StatefulWidget {
 
 class _TtossAppBarState extends State<TtossAppBar> {
   bool _showRedDot = false;
+  int _tappingCount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -24,46 +26,81 @@ class _TtossAppBarState extends State<TtossAppBar> {
       child: Row(
         children: [
           width10,
-          Image.asset("$basePath/icon/toss.png", height: 30,),
+          // AnimatedContainer(
+          //     duration: 1000.ms,
+          //     curve: Curves.linear,
+          //     color: _tappingCount < 2 ? Colors.red : Colors.blue,
+          //     width: 70,
+          //     height: _tappingCount < 2 ? 60 : 30,
+          //     child: Image.asset(
+          //       "$basePath/icon/toss.png",
+          //     )),
+          AnimatedCrossFade(
+              firstChild: Image.asset(
+                "$basePath/icon/toss.png",
+                height: 30,
+              ),
+              secondChild: Image.asset(
+                "$basePath/icon/map_point.png",
+                height: 30,
+              ),
+              crossFadeState: _tappingCount < 2 ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+              duration: 1500.ms),
           emptyExpanded,
-          Image.asset("$basePath/icon/map_point.png", height: 30,),
+          _tappingCount.text.make(),
+          GestureDetector(
+              onTap: () {
+                setState(() {
+                  _tappingCount--;
+                });
+              },
+              child: Image.asset(
+                "$basePath/icon/map_point.png",
+                height: 30,
+              )),
           width10,
           Tap(
             onTap: () {
               Nav.push(NotificationScreen());
             },
-            child: Stack(children: [
-              Image.asset("$basePath/icon/notification.png", height: 30,),
-              if(_showRedDot)
-                Positioned.fill(
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: Container(
-                        width: 6,
-                        height: 6,
-                        decoration:
-                        BoxDecoration(shape: BoxShape.circle, color: Colors.red),
-                      ),
-                    )) else
-                Positioned.fill(
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: Container(
-                        width: 6,
-                        height: 6,
-                        decoration:
-                        BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
-                      ),
-                    ))
+            child: Stack(
+              children: [
+                Image.asset(
+                  "$basePath/icon/notification.png",
+                  height: 30,
+                ),
+                if (_showRedDot)
+                  Positioned.fill(
+                      child: Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: 6,
+                      height: 6,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: Colors.red),
+                    ),
+                  ))
+                else
+                  Positioned.fill(
+                      child: Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: 6,
+                      height: 6,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: Colors.blue),
+                    ),
+                  ))
               ],
-            ).animate(onPlay: (controller) => controller.repeat()).shake(duration: 2010.ms, hz: 3).then().fadeOut(duration: 1000.ms),
+            )
+                .animate(onPlay: (controller) => controller.repeat())
+                .shake(duration: 2010.ms, hz: 3)
+                .then()
+                .fadeOut(duration: 1000.ms),
           ),
-          width10
-          ,
-        ]
-        ,
-      )
-      ,
+          width10,
+        ],
+      ),
     );
   }
 }
