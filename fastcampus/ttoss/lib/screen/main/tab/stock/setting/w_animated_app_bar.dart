@@ -2,6 +2,7 @@ import 'package:fast_app_base/app.dart';
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/common/widget/w_arrow.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:nav/nav.dart';
 
@@ -30,10 +31,11 @@ class _AnimatedAppBarState extends State<AnimatedAppBar> {
   }
 
   bool get isTriggerd => scrollPosition > 80;
+
   bool get isNotTriggerd => !isTriggerd;
 
   double getValue(double initial, double target) {
-    if(isTriggerd) {
+    if (isTriggerd) {
       return target;
     }
 
@@ -58,12 +60,35 @@ class _AnimatedAppBarState extends State<AnimatedAppBar> {
               ),
             ).p(20),
             AnimatedContainer(
-                duration: duration,
-                padding: EdgeInsets.only(left: getValue(20, 50), top: getValue(50, 15)),
-                child: AnimatedDefaultTextStyle(
-                    child: widget.title.text.make(),
-                    style: TextStyle(fontSize: getValue(30, 18), fontWeight: FontWeight.bold),
-                    duration: duration)),
+              duration: duration,
+              padding: EdgeInsets.only(
+                  left: getValue(20, 50), top: getValue(50, 15)),
+              child: AnimatedDefaultTextStyle(
+                  child: widget.title.text.make(),
+                  style: TextStyle(
+                      fontSize: getValue(30, 18), fontWeight: FontWeight.bold),
+                  duration: duration),
+            ),
+            Positioned.fill(
+                child: Align(
+              alignment: Alignment.topRight,
+              child: TweenAnimationBuilder<Color?>(
+                duration: 1000.ms,
+                tween: ColorTween(
+                    begin: Colors.green,
+                    end: isTriggerd ? Colors.orange : Colors.green),
+                builder: (context, value, child) => ColorFiltered(
+                  colorFilter: ColorFilter.mode(
+                      value ?? Colors.green, BlendMode.modulate),
+                  child: child,
+                ),
+                child: Image.asset(
+                  "$basePath/icon/map_point.png",
+                  height: 60,
+                  colorBlendMode: BlendMode.modulate,
+                ),
+              ),
+            ))
           ],
         ),
       ),
