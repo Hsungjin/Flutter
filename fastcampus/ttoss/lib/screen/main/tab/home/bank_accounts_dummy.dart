@@ -1,3 +1,6 @@
+import 'dart:collection';
+
+import 'package:fast_app_base/common/dart/extension/collection_extension.dart';
 import 'package:fast_app_base/screen/main/tab/home/bank_dummy.dart';
 import 'package:fast_app_base/screen/main/tab/home/vo/vo_bank_account.dart';
 
@@ -27,6 +30,31 @@ main() {
   bankAccounts.toSet();
 
   bankSet.toList();
+
+  // 삽입
+  bankAccounts.insert(1, bankAccountKakao);
+
+  // 위치 이동
+  final temp = bankAccounts.removeAt(4);
+  bankAccounts.insert(4, temp);
+
+  // 교환
+  bankAccounts.swap(0, 5);
+
+  // 변환
+  final banks = bankAccounts.map((e) => e.bank).toList();
+  for (final bank in banks) {
+    print(bank.toString());
+  }
+  final map = HashMap<String, BankAccount>();
+  map['ttoss'] = bankAccountToss;
+  map['kakao'] = bankAccountKakao;
+  map.putIfAbsent('kakao', () => bankAccountKakao);
+
+  final uniqueBanks = banks.toSet();
+  for (final bank in uniqueBanks) {
+    print(bank.toString());
+  }
 }
 
 // List
