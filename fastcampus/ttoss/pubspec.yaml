@@ -76,6 +76,7 @@ dependencies:
   timeago: ^3.7.0
   flutter_animate: ^4.5.0
   animations: ^2.0.11
+  rive: ^0.13.14
 
 dev_dependencies:
   flutter_test:
@@ -109,6 +110,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/json/
+    - assets/rive/
     - assets/image/
     - assets/image/notification/
     - assets/image/icon/
