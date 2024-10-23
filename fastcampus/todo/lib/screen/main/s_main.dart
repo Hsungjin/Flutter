@@ -54,14 +54,7 @@ class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMi
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            final result = await WriteTodoDialog().show();
-            if (result != null) {
-              TodoDataHolder.of(context).notifier.addTodo(Todo(
-                    id: DateTime.now().millisecondsSinceEpoch,
-                    title: result.text,
-                    dueDate: result.dateTime,
-                  ));
-            }
+            context.holder.addTodo();
           },
           child: Icon(EvaIcons.plus),
         ),
