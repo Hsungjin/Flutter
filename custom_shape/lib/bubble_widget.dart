@@ -1,38 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class MessageShapeBorder extends OutlinedBorder {
+class BubbleBorder extends OutlinedBorder {
   final double borderRadius;
   final double weight;
 
-  const MessageShapeBorder({
-    super.side,
+  const BubbleBorder({
+    BorderSide side = BorderSide.none,
     this.borderRadius = 50,
     this.weight = 2.5,
-    required Color fillColor,
-  });
+  }) : super(side: side);
 
   @override
-  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
-    final double left = rect.left;
-    final double right = rect.right;
-    final double top = rect.top;
-    final double bottom = rect.bottom;
-
-    final radius = borderRadius;
-    final offset = 10;
-
-    return Path()
-      // ..moveTo(left, bottom)
-      // ..conicTo(left + offset, bottom - offset, left + offset, bottom - 2 * radius, weight)
-      // ..lineTo(left + offset, top + radius)
-      // ..conicTo(left + offset, top, left + offset + radius, top, weight)
-      // ..lineTo(right - radius, top)
-      // ..conicTo(right, top, right, top + radius, weight)
-      // ..lineTo(right, bottom - radius)
-      // ..conicTo(right, bottom, right - radius, bottom, weight)
-      ..close();
-  }
+  EdgeInsetsGeometry get dimensions => EdgeInsets.all(side.width);
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
@@ -48,8 +28,28 @@ class MessageShapeBorder extends OutlinedBorder {
 
     return Path()
       ..moveTo(left + offset + radius, bottom)
-      ..conicTo(
-          left + offset, bottom, left + offset, bottom - 2 * radius, weight)
+      ..conicTo(left + offset, bottom, left + offset, bottom - 2 * radius, weight)
+      ..lineTo(left + offset, top + radius)
+      ..conicTo(left + offset, top, left + offset + radius, top, weight)
+      ..lineTo(right - radius, top)
+      ..conicTo(right, top, right, top + radius, weight)
+      ..lineTo(right, bottom - radius)
+      ..conicTo(right, bottom, right - radius, bottom, weight)
+      ..close();
+  }
+
+  @override
+  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
+    final double left = rect.left;
+    final double right = rect.right;
+    final double top = rect.top;
+    final double bottom = rect.bottom;
+    final radius = borderRadius;
+    final offset = 10.0;
+
+    return Path()
+      ..moveTo(left, bottom)
+      ..conicTo(left + offset, bottom - offset, left + offset, bottom - 2 * radius, weight)
       ..lineTo(left + offset, top + radius)
       ..conicTo(left + offset, top, left + offset + radius, top, weight)
       ..lineTo(right - radius, top)
@@ -65,14 +65,20 @@ class MessageShapeBorder extends OutlinedBorder {
   }
 
   @override
-  OutlinedBorder copyWith({BorderSide? side}) {
-    // TODO: implement copyWith
-    throw UnimplementedError();
+  ShapeBorder scale(double t) {
+    return BubbleBorder(
+      side: side.scale(t),
+      borderRadius: borderRadius * t,
+      weight: weight * t,
+    );
   }
 
   @override
-  ShapeBorder scale(double t) {
-    // TODO: implement scale
-    throw UnimplementedError();
+  OutlinedBorder copyWith({BorderSide? side}) {
+    return BubbleBorder(
+      side: side ?? this.side,
+      borderRadius: borderRadius,
+      weight: weight,
+    );
   }
 }
