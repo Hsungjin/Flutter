@@ -1,5 +1,4 @@
-import 'package:custom_shape/bubble_widget.dart';
-import 'package:custom_shape/ticket_item.dart';
+import 'package:custom_shape/card_item.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -61,31 +60,34 @@ class _MyHomePageState extends State<MyHomePage> {
                 _item6(),
                 SizedBox(height: 20),
                 _item7(),
+                SizedBox(height: 20),
+                _item8(),
+                SizedBox(height: 100),
               ],
             ),
           ),
         ),
       ),
-      floatingActionButton: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.blueGrey,
-        ),
-        height: 50,
-        width: 50,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.deepPurple,
-        notchMargin: 20,
-        shape: AutomaticNotchedShape(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          BeveledRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        ),
-        child: Row(
-          children: [Text('123123213')],
-        ),
-      ),
+      // floatingActionButton: Container(
+      //   decoration: BoxDecoration(
+      //     borderRadius: BorderRadius.circular(10),
+      //     color: Colors.blueGrey,
+      //   ),
+      //   height: 50,
+      //   width: 50,
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // bottomNavigationBar: BottomAppBar(
+      //   color: Colors.deepPurple,
+      //   notchMargin: 20,
+      //   shape: AutomaticNotchedShape(
+      //     RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      //     BeveledRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      //   ),
+      //   child: Row(
+      //     children: [Text('123123213')],
+      //   ),
+      // ),
     );
   }
 
@@ -164,23 +166,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _item8() {
-    return TicketItem(
-      topChild: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Text("Top child"),
-          ],
-        ),
-      ),
-      bottomChild: ShaderMask(
-        blendMode: BlendMode.srcATop,
-        shaderCallback: (rectangle) => LinearGradient(
-          begin: Alignment.topCenter,
-          stops: [0, 1],
-          colors: [Color(0xFFd6f5ff), Color(0x00d6f5ff)],
-          end: Alignment.bottomCenter,
-        ).createShader(rectangle),
+    return ClipPath(
+      clipper: CardItem(),
+      child: Container(
         child: Image.asset(
           "assets/tt.jpeg",
           height: 200,
@@ -231,12 +219,8 @@ class _MessageBubbleState extends State<MessageBubble>
 class MessageShapeBorder extends OutlinedBorder {
   final double borderRadius;
   final double weight;
-  // final Color fillColor;
 
-  const MessageShapeBorder(
-      {super.side,
-        this.borderRadius = 50,
-        /*required this.fillColor,*/ this.weight = 2.5});
+  const MessageShapeBorder({super.side, this.borderRadius = 50, this.weight = 2.5});
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
@@ -252,8 +236,7 @@ class MessageShapeBorder extends OutlinedBorder {
 
     return Path()
       ..moveTo(left + offset + radius, bottom)
-      ..conicTo(
-          left + offset, bottom, left + offset, bottom - 2 * radius, weight)
+      ..conicTo(left + offset, bottom, left + offset, bottom - 2 * radius, weight)
       ..lineTo(left + offset, top + radius)
       ..conicTo(left + offset, top, left + offset + radius, top, weight)
       ..lineTo(right - radius, top)
@@ -275,8 +258,7 @@ class MessageShapeBorder extends OutlinedBorder {
 
     return Path()
       ..moveTo(left, bottom)
-      ..conicTo(left + offset, bottom - offset, left + offset,
-          bottom - 2 * radius, weight)
+      ..conicTo(left + offset, bottom - offset, left + offset, bottom - 2 * radius, weight)
       ..lineTo(left + offset, top + radius)
       ..conicTo(left + offset, top, left + offset + radius, top, weight)
       ..lineTo(right - radius, top)
