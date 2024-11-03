@@ -7,7 +7,7 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:nav/nav.dart';
 export 'package:quiver/strings.dart';
 export 'package:velocity_x/velocity_x.dart';
-export 'package:fast_app_base/common/data/memory/todo_data_holder.dart';
+export 'package:fast_app_base/common/data/memory/todo_cubit.dart';
 
 export '../common/dart/extension/animation_controller_extension.dart';
 export '../common/dart/extension/collection_extension.dart';
