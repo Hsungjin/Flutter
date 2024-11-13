@@ -1,4 +1,7 @@
+import 'package:app_life_cycle/page/app_life_cycle_listener.dart';
+import 'package:app_life_cycle/page/widget_binding_observer.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,35 +13,44 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routerConfig: _router,
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+final GoRouter _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const MyHomePage(),
+    ),
+    GoRoute(
+      path: '/widgetsBindingObserver',
+      builder: (context, state) => const WidgetBindingObserver(),
+    ),
+    GoRoute(
+      path: '/appLifecycleListener',
+      builder: (context, state) => const AppLifeCycleListener(),
+    ),
+  ],
+);
 
-  final String title;
+
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,9 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
-              onTap: () {
-
-              },
+              onTap: () => context.push('/widgetsBindingObserver'),
               child: Container(
                 padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
@@ -62,9 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 10,),
 
             InkWell(
-              onTap: () {
-
-              },
+              onTap: () => context.push('/appLifecycleListener'),
               child: Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
