@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               onPressed: () {
-                context.goNamed('counter');
+                context.pushNamed('counter');
               },
               child: const Text(
                 'Go to counter page',
@@ -34,6 +34,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              onPressed: () {
+                context.pushNamed('timer');
+              },
+              child: const Text('Go to timer page'),
             ),
           ],
         ),

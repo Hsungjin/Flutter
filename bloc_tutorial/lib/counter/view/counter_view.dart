@@ -1,19 +1,22 @@
 import 'package:bloc_tutorial/counter/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
-/// {@template counter_view}
-/// A [StatelessWidget] which reacts to the provided
-/// [CounterCubit] state and notifies it in response to user input.
-/// {@endtemplate}
 class CounterView extends StatelessWidget {
-  /// {@macro counter_view}
   const CounterView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
+      appBar: AppBar(
+          title: const Text('Counter'),
+          leading: IconButton(
+              onPressed: () {
+                context.pop();
+              },
+              icon: const Icon(Icons.arrow_back))),
       body: Center(
         child: BlocBuilder<CounterCubit, int>(
           builder: (context, state) {
@@ -24,7 +27,7 @@ class CounterView extends StatelessWidget {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
+        children: [
           FloatingActionButton(
             heroTag: 'incrementButton',
             key: const Key('counterView_increment_floatingActionButton'),
