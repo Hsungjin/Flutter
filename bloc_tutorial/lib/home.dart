@@ -1,4 +1,3 @@
-import 'package:bloc_tutorial/main.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -46,6 +45,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 context.pushNamed('timer');
               },
               child: const Text('Go to timer page'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                context.pushNamed('blocProviderPage');
+              },
+              child: const Text('Go to bloc provider page'),
             ),
           ],
         ),

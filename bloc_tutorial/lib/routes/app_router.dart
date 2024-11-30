@@ -1,4 +1,5 @@
 import 'package:bloc_tutorial/counter_app.dart';
+import 'package:bloc_tutorial/ex_bloc_provider/bloc_provider_page.dart';
 import 'package:bloc_tutorial/home.dart';
 import 'package:bloc_tutorial/timer_app.dart';
 import 'package:go_router/go_router.dart';
@@ -19,6 +20,11 @@ class AppRouter {
         path: '/timer',
         name: 'timer',
         builder: (context, state) => const TimerApp(),
+      ),
+      GoRoute(
+        path: '/blocProviderPage',
+        name: 'blocProviderPage',
+        builder: (context, state) => const BlocProviderPage(),
       ),
     ],
   );
