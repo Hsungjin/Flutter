@@ -10,7 +10,7 @@ class BlocProviderPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => SampleBloc(),
       lazy: false,
-      child: SamplePage(),
+      child: const SamplePage(),
     );
   }
 }

@@ -53,6 +53,20 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: const Text('Go to bloc provider page'),
             ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                context.pushNamed('multiBlocProviderPage');
+              },
+              child: const Text('Go to multi bloc provider page'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                context.pushNamed('blocBuilderPage');
+              },
+              child: const Text('Go to bloc builder page'),
+            ),
           ],
         ),
       ),
