@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CardPainter extends CustomPainter {
+class BackCardPainter extends CustomPainter {
   final double cardWidth;
   final double cardHeight;
   final Color cardColor;
+  final Color stripeColor;
 
-  const CardPainter({
+  const BackCardPainter({
     required this.cardWidth,
     required this.cardHeight,
     required this.cardColor,
+    this.stripeColor = Colors.black54,
   });
 
   @override
@@ -17,55 +19,52 @@ class CardPainter extends CustomPainter {
       ..color = cardColor
       ..style = PaintingStyle.fill;
     
+    final stripePaint = Paint()
+      ..color = stripeColor
+      ..style = PaintingStyle.fill;
+    
+    final signaturePaint = Paint()
+      ..color = Colors.white70
+      ..style = PaintingStyle.fill;
+    
     // 모서리 곡률을 위한 제어점 거리
     final controlPointDistance = cardWidth / 15;
-
+    
     // 모서리가 들어간 부분을 표현(카드 삼각형)
     final controlDepth = cardHeight * 0.1;
     
+    // 카드 외곽선 그리기
     final path = Path()
-      // 1번 포인트에서 시작
       ..moveTo(controlPointDistance, 0)
-      
-      // 1-2번 직선
       ..lineTo(cardWidth - controlPointDistance, 0)
-
-      // 2-3번 곡선
       ..quadraticBezierTo(cardWidth, 0, cardWidth, controlPointDistance)
-      
-      // 3-4번 직선
       ..lineTo(cardWidth, cardHeight / 2)
-
-      // 4-5번 곡선
-      ..quadraticBezierTo(cardWidth - controlDepth,  cardHeight / 2 + cardHeight * 0.05, cardWidth - controlDepth, cardHeight / 2 + cardHeight * 0.1)
-
-      // 5-6번 곡선
+      ..quadraticBezierTo(cardWidth - controlDepth, cardHeight / 2 + cardHeight * 0.05, cardWidth - controlDepth, cardHeight / 2 + cardHeight * 0.1)
       ..quadraticBezierTo(cardWidth - controlDepth, cardHeight / 2 + cardHeight * 0.15, cardWidth, cardHeight / 2 + cardHeight * 0.2)
-
-      // 6-7번 직선
       ..lineTo(cardWidth, cardHeight - controlPointDistance)
-
-      // 7~8번 곡선
       ..quadraticBezierTo(cardWidth, cardHeight, cardWidth - controlPointDistance, cardHeight)
-
-      // 8-9번 직선
       ..lineTo(controlPointDistance, cardHeight)
-
-      // 9-10번 곡선
       ..quadraticBezierTo(0, cardHeight, 0, cardHeight - controlPointDistance)
-
-      // 10-11번 직선
       ..lineTo(0, controlPointDistance)
-
-      // 11~1번 곡선
       ..quadraticBezierTo(0, 0, controlPointDistance, 0)
       ..close();
     
     canvas.drawPath(path, backgroundPaint);
+
+    // 마그네틱 스트라이프 그리기
+    final stripeRect = Rect.fromLTWH(0,  cardHeight * 0.15, cardWidth, cardHeight * 0.15);
+    canvas.drawRect(stripeRect, stripePaint);
+
+    // 서명란 그리기
+    final signatureRect = RRect.fromRectAndRadius(
+      Rect.fromLTWH(cardWidth * 0.1, cardHeight * 0.6, cardWidth * 0.7, cardHeight * 0.15,),
+      const Radius.circular(4),
+    );
+    canvas.drawRRect(signatureRect, signaturePaint);
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
+    return true;
   }
-}
+} 
