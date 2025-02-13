@@ -1,7 +1,9 @@
+import 'package:creadit_card_example/database/database_helper.dart';
 import 'package:creadit_card_example/my_router.dart';
 import 'package:creadit_card_example/widget/back_card_painter.dart';
 import 'package:creadit_card_example/widget/card_painter.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 class AddCardScreen extends StatefulWidget {
   const AddCardScreen({super.key});
@@ -20,11 +22,13 @@ class _AddCardScreenState extends State<AddCardScreen> with SingleTickerProvider
   TextEditingController cardExpirationDateController = TextEditingController();
   TextEditingController cardCvvController = TextEditingController();
 
+  String cardNumber = '';
+  String cardHolderName = '';
+  String cardExpirationDate = '';
+  String cardCvv = '';
 
-  String cardNumber = '1234-5678-9012-3456';
-  String cardHolderName = '흐성진';
-  String cardExpirationDate = '01/25';
-  String cardCvv = '123';
+  final DatabaseHelper _databaseHelper = DatabaseHelper.instance;
+  final _uuid = const Uuid();
 
   String _formatCardNumber(String number) {
     final digitsOnly = number.replaceAll(RegExp(r'[^\d]'), '');
@@ -76,6 +80,45 @@ class _AddCardScreenState extends State<AddCardScreen> with SingleTickerProvider
     });
   }
 
+  Future<void> _saveCard() async {
+    // 카드 데이터 유효성 검사
+    if (cardNumber.isEmpty || 
+        cardHolderName.isEmpty || 
+        cardExpirationDate.isEmpty || 
+        cardCvv.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('모든 필드를 입력해주세요.')),
+      );
+      return;
+    }
+
+        try {
+      final cardData = {
+        '_id': _uuid.v4(), // 고유 ID 생성
+        'card_name': cardHolderName,
+        'card_number': cardNumber,
+        'card_expiration_date': cardExpirationDate,
+        'card_cvv': cardCvv,
+        'card_color': '#0000FF', // 파란색
+        'dateTime': DateTime.now().toIso8601String(),
+      };
+
+      await _databaseHelper.insertCard(cardData);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('카드가 성공적으로 저장되었습니다.')),
+        );
+        MyRouter.router.go('/');
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('카드 저장 중 오류가 발생했습니다: $e')),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,7 +142,7 @@ class _AddCardScreenState extends State<AddCardScreen> with SingleTickerProvider
                 builder: (context, child) {
                   return Transform(
                     transform: Matrix4.identity()
-                      ..setEntry(3, 2, 0.001)
+                      ..setEntry(3, 2, 0.0001)
                       ..rotateY(3.14159 * _animation.value),
                     alignment: Alignment.center,
                     child: _animation.value < 0.5
@@ -230,9 +273,7 @@ class _AddCardScreenState extends State<AddCardScreen> with SingleTickerProvider
             ),
             Expanded(child: Container()),
             ElevatedButton(
-              onPressed: () {
-                MyRouter.router.go('/');
-              },
+              onPressed: _saveCard,
               child: Text('추가'),
             ),
             SizedBox(height: MediaQuery.of(context).viewPadding.bottom),
