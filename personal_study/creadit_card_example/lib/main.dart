@@ -22,7 +22,7 @@ class MainApp extends StatelessWidget {
         // 기본 배경색
         scaffoldBackgroundColor: Colors.black54,
 
-        // 엡비 섹싱
+        // 엡비 섹상
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.black54,
           foregroundColor: Colors.white,
