@@ -34,9 +34,9 @@ class CardPainter extends CustomPainter {
 
       //
       ..lineTo(cardWidth, cardHeight / 2 - cardDepth)
-      ..quadraticBezierTo(cardWidth, cardHeight / 2, cardWidth - 10,
+      ..quadraticBezierTo(cardWidth, cardHeight / 2, cardWidth - cardWidth / 30,
           cardHeight / 2 + cardDepth * 2)
-      ..lineTo(cardWidth - 10, cardHeight / 2 + cardDepth * 2)
+      ..lineTo(cardWidth - cardWidth / 30, cardHeight / 2 + cardDepth * 2)
       ..quadraticBezierTo(
           cardWidth - cardDepth * 4,
           cardHeight / 2 + cardDepth * 4,

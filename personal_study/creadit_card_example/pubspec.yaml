@@ -7,6 +7,7 @@ environment:
   sdk: ^3.6.1
 
 dependencies:
+  carousel_slider: ^5.0.0
   flutter:
     sdk: flutter
   go_router: ^14.7.2
