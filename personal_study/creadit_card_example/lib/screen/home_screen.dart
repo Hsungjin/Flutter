@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                               begin: Alignment.topLeft,
                                               end: Alignment.bottomRight,
                                               colors: [
-                                                Colors.white.withOpacity(0.7),
+                                                Colors.white.withValues(alpha: 0.7),
                                                 Colors.transparent,
                                               ],
                                             ),
