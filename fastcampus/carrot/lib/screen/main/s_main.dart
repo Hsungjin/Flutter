@@ -56,7 +56,7 @@ class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMi
                   ),
                   bottomNavigationBar: _buildBottomNavigationBar(context),
               ),
-              FloatingCarrotButton(),
+              // FloatingCarrotButton(),
             ],
           ),
         ),
