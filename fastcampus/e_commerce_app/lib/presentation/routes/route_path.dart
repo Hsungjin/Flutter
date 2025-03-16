@@ -1,4 +1,7 @@
 class RoutePath {
+  /// main_screen
+  static const String main = '/';
+
+  /// splash_screen
   static const String splash = '/splash';
-  static const String home = '/home';
 }
