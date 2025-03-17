@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/theme/constant/app_icons.dart';
 import '../../cubit/bottom_nav_cubit.dart';
+import '../../cubit/mall_type_cubit.dart';
 
 class DefaultAppBar extends StatelessWidget {
   const DefaultAppBar({super.key, required this.bottomNav});
@@ -10,21 +12,31 @@ class DefaultAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-      color: Theme.of(context).colorScheme.primary,
-      child: AppBar(
-        title: Text(
-          bottomNav.toName,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+    return BlocBuilder<MallTypeCubit, MallType>(
+      builder: (_, state) {
+        return Container(
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+          color: (state.isMarket)
+              ? Theme.of(context).colorScheme.primary
+              : Theme.of(context).colorScheme.surface,
+          child: AppBar(
+            title: Text(
+              bottomNav.toName,
+              style: TextStyle(
+                color: (state.isMarket)
+                    ? Theme.of(context).colorScheme.onPrimary
+                    : Theme.of(context).colorScheme.primary,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            backgroundColor: (state.isMarket)
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.surface,
+            centerTitle: true,
           ),
-        ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        centerTitle: true,
-      ),
+        );
+      },
     );
   }
 }
