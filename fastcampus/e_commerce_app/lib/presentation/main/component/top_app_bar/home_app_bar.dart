@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/theme/constant/app_icons.dart';
+import '../../../../core/theme/custom/custom_app_bar.dart';
 import '../../../../core/theme/custom/custom_font_weight.dart';
 import '../../../../core/theme/custom/custom_theme.dart';
 import '../../cubit/mall_type_cubit.dart';
+import 'widgets/svg_icon_button.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -18,20 +20,15 @@ class HomeAppBar extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
           color: state.theme.backgroundColor,
           child: AppBar(
-            leading: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset(
-                AppIcons.mainLogo,
-                colorFilter: ColorFilter.mode(
-                  state.theme.logoColor,
-                  BlendMode.srcIn,
-                ),
-              ),
+            leading: SvgIconButton(
+              icon: AppIcons.mainLogo,
+              color: state.theme.logoColor,
+              padding: 8,
             ),
             title: AnimatedContainer(
                 decoration: BoxDecoration(
                   color: state.theme.containerColor,
-                  borderRadius: const BorderRadius.all(Radius.circular(30)),
+                  borderRadius: BorderRadius.all(Radius.circular(CustomAppBarTheme.tabBarRadius)),
                 ),
                 child: SizedBox(
                   height: 28,
@@ -45,62 +42,39 @@ class HomeAppBar extends StatelessWidget {
                                 Tab(text: MallType.values[index].toName),),
                         isScrollable: false,
                         indicator: BoxDecoration(
-                            color: state.isMarket
-                                ? Theme.of(context).colorScheme.surface
-                                : Theme.of(context).colorScheme.primary,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(30)),),
+                            color: state.theme.indicatorColor,
+                            borderRadius: BorderRadius.all(Radius.circular(CustomAppBarTheme.tabBarRadius)),),
                         indicatorSize: TabBarIndicatorSize.tab,
                         dividerColor: Colors.transparent,
-                        labelColor: state.isMarket
-                            ? Theme.of(context).colorScheme.primary
-                            : Theme.of(context).colorScheme.surface,
+                          labelColor: state.theme.labelColor,
                         labelStyle: Theme.of(context).textTheme.labelLarge.bold,
                         labelPadding:
                             const EdgeInsets.symmetric(horizontal: 12),
-                        unselectedLabelColor: state.isMarket
-                            ? Theme.of(context).colorScheme.surface
-                            : Theme.of(context).colorScheme.contentPrimary,
+                        unselectedLabelColor: state.theme.unselectedLabelColor,
                         unselectedLabelStyle:
                             Theme.of(context).textTheme.labelLarge,
                         onTap: (index) =>
                             context.read<MallTypeCubit>().changeIndex(index),
-                        splashBorderRadius:
-                            const BorderRadius.all(Radius.circular(30)),),
+                        splashBorderRadius: BorderRadius.all(Radius.circular(CustomAppBarTheme.tabBarRadius)),),
                   ),
                 ),
-                duration: const Duration(milliseconds: 400),),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: SvgPicture.asset(
-                  AppIcons.location,
-                  colorFilter: ColorFilter.mode(
-                    (state.isMarket)
-                        ? Theme.of(context).colorScheme.surface
-                        : Theme.of(context).colorScheme.contentPrimary,
-                    BlendMode.srcIn,
-                  ),
-                ),
+                duration: Duration(milliseconds: CustomAppBarTheme.animationDuration),
               ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: SvgPicture.asset(
-                  AppIcons.cart,
-                  colorFilter: ColorFilter.mode(
-                    (state.isMarket)
-                        ? Theme.of(context).colorScheme.surface
-                        : Theme.of(context).colorScheme.contentPrimary,
-                    BlendMode.srcIn,
-                  ),
-                ),
+            actions: [
+              SvgIconButton(
+                icon: AppIcons.location,
+                color: state.theme.iconColor,
+              ),
+              SvgIconButton(
+                icon: AppIcons.cart,
+                color: state.theme.iconColor,
               ),
             ],
             backgroundColor: state.theme.backgroundColor,
             centerTitle: true,
             leadingWidth: 86,
           ),
-          duration: const Duration(milliseconds: 400),
+          duration: Duration(milliseconds: CustomAppBarTheme.animationDuration),
         );
       },
     );
