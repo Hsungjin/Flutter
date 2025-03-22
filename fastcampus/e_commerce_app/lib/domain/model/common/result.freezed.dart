@@ -38,7 +38,7 @@ class $ResultCopyWith<T, $Res> {
 /// @nodoc
 
 class Success<T> implements Result<T> {
-  const Success(this.data);
+  Success(this.data);
 
   final T data;
 
@@ -101,7 +101,7 @@ class _$SuccessCopyWithImpl<T, $Res> implements $SuccessCopyWith<T, $Res> {
 /// @nodoc
 
 class Error<T> implements Result<T> {
-  const Error(this.error);
+  Error(this.error);
 
   final ErrorResponse error;
 
@@ -125,7 +125,7 @@ class Error<T> implements Result<T> {
 
   @override
   String toString() {
-    return 'Result<$T>.Error(error: $error)';
+    return 'Result<$T>.error(error: $error)';
   }
 }
 
