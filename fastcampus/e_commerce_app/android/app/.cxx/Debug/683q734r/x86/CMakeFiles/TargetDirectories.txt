@@ -1,0 +1,2 @@
+/Users/sungjin/Documents/GitHub/Flutter/fastcampus/e_commerce_app/android/app/.cxx/Debug/683q734r/x86/CMakeFiles/edit_cache.dir
+/Users/sungjin/Documents/GitHub/Flutter/fastcampus/e_commerce_app/android/app/.cxx/Debug/683q734r/x86/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/opt/homebrew/Caskroom/flutter/3.29.2/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/sungjin/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/sungjin/Documents/GitHub/Flutter/fastcampus/e_commerce_app/android/app/.cxx/Debug/683q734r/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/sungjin/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/sungjin/Documents/GitHub/Flutter/fastcampus/e_commerce_app/android/app/.cxx/Debug/683q734r/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
