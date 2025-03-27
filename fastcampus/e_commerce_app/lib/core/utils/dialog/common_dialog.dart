@@ -8,7 +8,6 @@ import '../../../core/utils/error/error_response.dart';
 class CommonDialog {
   CommonDialog();
 
-
   static Future<bool?> errorDialog(BuildContext context, ErrorResponse error) {
     return showDialog<bool>(
       context: context,

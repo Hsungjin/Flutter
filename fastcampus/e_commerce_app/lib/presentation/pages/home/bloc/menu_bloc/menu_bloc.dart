@@ -33,11 +33,11 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
       if (response is Success<List<MenuModel>>) {
         emit(state.copyWith(status: Status.success, menus: response.data));
       } else if (response is Error) {
-        emit(state.copyWith(status: Status.error, errorMessage: '메뉴를 불러오는 중 오류가 발생했습니다'));
+        emit(state.copyWith(status: Status.error));
       }
     } catch (error) {
       CustomLogger.logger.e(error);
-      emit(state.copyWith(status: Status.error, errorMessage: error.toString()));
+      emit(state.copyWith(status: Status.error, error: ErrorResponse(message: error.toString())));
     }
   }
 

@@ -38,7 +38,7 @@ class $ResultCopyWith<T, $Res> {
 /// @nodoc
 
 class Success<T> implements Result<T> {
-  Success(this.data);
+  const Success(this.data);
 
   final T data;
 
@@ -101,7 +101,7 @@ class _$SuccessCopyWithImpl<T, $Res> implements $SuccessCopyWith<T, $Res> {
 /// @nodoc
 
 class Error<T> implements Result<T> {
-  Error(this.error);
+  const Error(this.error);
 
   final ErrorResponse error;
 

@@ -5,6 +5,6 @@ abstract class MenuState with _$MenuState {
   factory MenuState({
     @Default(Status.initial) Status status,
     @Default([]) List<MenuModel> menus,
-    String? errorMessage,
+    @Default(ErrorResponse()) ErrorResponse error,
   }) = _MenuState;
 }

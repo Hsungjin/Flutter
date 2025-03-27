@@ -48,7 +48,7 @@ class HomePageView extends StatelessWidget {
         listener: (context, state) async {
           if (state.status == Status.error) {
             final bool result =
-                await CommonDialog.errorDialog(context, ErrorResponse(message: state.errorMessage)) ?? false;
+                await CommonDialog.errorDialog(context, ErrorResponse(message: state.error.message)) ?? false;
           }
         },
         listenWhen: (previous, current) => previous.status != current.status,

@@ -17,7 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$MenuState {
   Status get status;
   List<MenuModel> get menus;
-  String? get errorMessage;
+  ErrorResponse get error;
 
   /// Create a copy of MenuState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,17 +33,16 @@ mixin _$MenuState {
             other is MenuState &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other.menus, menus) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status,
-      const DeepCollectionEquality().hash(menus), errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, status, const DeepCollectionEquality().hash(menus), error);
 
   @override
   String toString() {
-    return 'MenuState(status: $status, menus: $menus, errorMessage: $errorMessage)';
+    return 'MenuState(status: $status, menus: $menus, error: $error)';
   }
 }
 
@@ -52,7 +51,7 @@ abstract mixin class $MenuStateCopyWith<$Res> {
   factory $MenuStateCopyWith(MenuState value, $Res Function(MenuState) _then) =
       _$MenuStateCopyWithImpl;
   @useResult
-  $Res call({Status status, List<MenuModel> menus, String? errorMessage});
+  $Res call({Status status, List<MenuModel> menus, ErrorResponse error});
 }
 
 /// @nodoc
@@ -69,7 +68,7 @@ class _$MenuStateCopyWithImpl<$Res> implements $MenuStateCopyWith<$Res> {
   $Res call({
     Object? status = null,
     Object? menus = null,
-    Object? errorMessage = freezed,
+    Object? error = null,
   }) {
     return _then(_self.copyWith(
       status: null == status
@@ -80,10 +79,10 @@ class _$MenuStateCopyWithImpl<$Res> implements $MenuStateCopyWith<$Res> {
           ? _self.menus
           : menus // ignore: cast_nullable_to_non_nullable
               as List<MenuModel>,
-      errorMessage: freezed == errorMessage
-          ? _self.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+      error: null == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as ErrorResponse,
     ));
   }
 }
@@ -94,7 +93,7 @@ class _MenuState implements MenuState {
   _MenuState(
       {this.status = Status.initial,
       final List<MenuModel> menus = const [],
-      this.errorMessage})
+      this.error = const ErrorResponse()})
       : _menus = menus;
 
   @override
@@ -110,7 +109,8 @@ class _MenuState implements MenuState {
   }
 
   @override
-  final String? errorMessage;
+  @JsonKey()
+  final ErrorResponse error;
 
   /// Create a copy of MenuState
   /// with the given fields replaced by the non-null parameter values.
@@ -127,17 +127,16 @@ class _MenuState implements MenuState {
             other is _MenuState &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._menus, _menus) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status,
-      const DeepCollectionEquality().hash(_menus), errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, status, const DeepCollectionEquality().hash(_menus), error);
 
   @override
   String toString() {
-    return 'MenuState(status: $status, menus: $menus, errorMessage: $errorMessage)';
+    return 'MenuState(status: $status, menus: $menus, error: $error)';
   }
 }
 
@@ -149,7 +148,7 @@ abstract mixin class _$MenuStateCopyWith<$Res>
       __$MenuStateCopyWithImpl;
   @override
   @useResult
-  $Res call({Status status, List<MenuModel> menus, String? errorMessage});
+  $Res call({Status status, List<MenuModel> menus, ErrorResponse error});
 }
 
 /// @nodoc
@@ -166,7 +165,7 @@ class __$MenuStateCopyWithImpl<$Res> implements _$MenuStateCopyWith<$Res> {
   $Res call({
     Object? status = null,
     Object? menus = null,
-    Object? errorMessage = freezed,
+    Object? error = null,
   }) {
     return _then(_MenuState(
       status: null == status
@@ -177,10 +176,10 @@ class __$MenuStateCopyWithImpl<$Res> implements _$MenuStateCopyWith<$Res> {
           ? _self._menus
           : menus // ignore: cast_nullable_to_non_nullable
               as List<MenuModel>,
-      errorMessage: freezed == errorMessage
-          ? _self.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+      error: null == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as ErrorResponse,
     ));
   }
 }
