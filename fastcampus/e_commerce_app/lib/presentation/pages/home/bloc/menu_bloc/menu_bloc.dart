@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mocktail/mocktail.dart';
 
 import '../../../../../core/utils/constant.dart';
 import '../../../../../core/utils/error/error_response.dart';
@@ -18,30 +17,48 @@ part 'menu_state.dart';
 part 'menu_bloc.freezed.dart';
 
 class MenuBloc extends Bloc<MenuEvent, MenuState> {
-  final DisplayUsecase _displayUseCase;
+  final DisplayUsecase _displayUsecase;
 
-  MenuBloc(this._displayUseCase) : super(MenuState()) {
-    on<MenuInitialized>(_onMenuInitialized);
+  MenuBloc(this._displayUsecase) : super(MenuState()) {
+    on<MenuInitialized>(_onMenusInitialized);
   }
 
-  Future<void> _onMenuInitialized(MenuInitialized event, Emitter<MenuState> emit) async {
+  /// GNB 초기화
+  Future<void> _onMenusInitialized(
+    MenuInitialized event,
+    Emitter<MenuState> emit,
+  ) async {
     final mallType = event.mallType;
-    emit(state.copyWith(status: Status.loading));
 
+    emit(state.copyWith(status: Status.loading));
     try {
-      final Result<List<MenuModel>> response = await _fetch(mallType);
-      if (response is Success<List<MenuModel>>) {
-        emit(state.copyWith(status: Status.success, menus: response.data));
-      } else if (response is Error) {
-        emit(state.copyWith(status: Status.error));
-      }
+      final Result<List<MenuModel>> response = await _fetch(mallType: mallType);
+      response.when(
+        success: (menus) {
+          emit(state.copyWith(
+            status: Status.success,
+            mallType: mallType,
+            menus: menus,
+          ));
+        },
+        failure: (error) {
+          emit(state.copyWith(status: Status.error, error: error));
+        },
+      );
     } catch (error) {
       CustomLogger.logger.e(error);
-      emit(state.copyWith(status: Status.error, error: ErrorResponse(message: error.toString())));
+      emit(
+        state.copyWith(
+          status: Status.error,
+          error: CommonException.setError(error),
+        ),
+      );
     }
   }
 
-  Future<Result<List<MenuModel>>> _fetch(MallType mallType) async {
-    return await _displayUseCase.execute(usecase: GetMenusUsecase(mallType: mallType));
+  Future<Result<List<MenuModel>>> _fetch({required MallType mallType}) async {
+    return await _displayUsecase.execute(
+      usecase: GetMenusUsecase(mallType: mallType),
+    );
   }
 }

@@ -4,7 +4,8 @@ part of 'menu_bloc.dart';
 abstract class MenuState with _$MenuState {
   factory MenuState({
     @Default(Status.initial) Status status,
-    @Default([]) List<MenuModel> menus,
+    @Default(MallType.market) MallType mallType,
+    @Default(<MenuModel>[]) List<MenuModel> menus,
     @Default(ErrorResponse()) ErrorResponse error,
   }) = _MenuState;
 }

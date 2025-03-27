@@ -6,6 +6,6 @@ abstract class MenuEvent {
 
 class MenuInitialized extends MenuEvent {
   final MallType mallType;
-  
-  const MenuInitialized({this.mallType = MallType.market});
+
+  MenuInitialized({this.mallType = MallType.market});
 }

@@ -18,12 +18,13 @@ class GlobalNavBarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: TabBarView(
-        children: List.generate(
-          menus.length,
-          (index) {
-            return BlocProvider(create: (_) => ViewModuleBloc(locator<DisplayUsecase>())..add(ViewModuleInitialized(menus[index].tabId)), child: ViewModuleList(),);
-          }
-        ),
+        children: List.generate(menus.length, (index) {
+          return BlocProvider(
+            create: (_) => ViewModuleBloc(locator<DisplayUsecase>())
+              ..add(ViewModuleInitialized(menus[index].tabId)),
+            child: ViewModuleList(),
+          );
+        }),
       ),
     );
   }
@@ -46,11 +47,11 @@ class ViewModuleList extends StatelessWidget {
             return Column(
               children: [
                 Container(
-                    height: 50,
-                    color: Colors.deepOrangeAccent,
-                    child: Center(
-                      child: Text('${state.tabId}'),
-                    ),
+                  height: 50,
+                  color: Colors.deepOrangeAccent,
+                  child: Center(
+                    child: Text('${state.tabId}'),
+                  ),
                 ),
                 Expanded(
                   child: ListView.separated(

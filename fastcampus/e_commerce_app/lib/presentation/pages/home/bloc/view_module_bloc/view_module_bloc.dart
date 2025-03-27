@@ -27,11 +27,11 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
     final tabId = event.tabId;
     try {
       final response = await _fetch(tabId);
-      if (response is Success<List<ViewModuleModel>>) {
-        emit(state.copyWith(status: Status.success, viewModules: response.data));
-      } else if (response is Error) {
-        emit(state.copyWith(status: Status.error, error: CommonException.setError(response)));
-      }
+      response.when(success: (data) {
+        emit(state.copyWith(status: Status.success, viewModules: data));
+      }, failure: (error) {
+        emit(state.copyWith(status: Status.error, error: error));
+      });
     } catch (error) {
       CustomLogger.logger.e(error);
       emit(state.copyWith(status: Status.error, error: CommonException.setError(error)));

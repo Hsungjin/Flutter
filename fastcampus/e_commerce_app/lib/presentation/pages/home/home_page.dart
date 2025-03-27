@@ -8,6 +8,8 @@ import '../../../domain/usecase/display/display_usecase.dart';
 import '../../../service_locator.dart';
 import '../../main/cubit/mall_type_cubit.dart';
 import 'bloc/menu_bloc/menu_bloc.dart';
+import 'component/global_nav/global_nav_bar.dart';
+import 'component/global_nav/global_nav_bar_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -37,21 +39,39 @@ class HomePageView extends StatelessWidget {
         builder: (_, state) {
           switch (state.status) {
             case Status.initial:
-            case Status.loading:
               return const Center(child: CircularProgressIndicator());
+            case Status.loading:
+              return DefaultTabController(
+                key: ValueKey<MallType>(state.mallType),
+                length: state.menus.length,
+                child: Column(children: [
+                  GlobalNavBar(state.menus),
+                  GlobalNavBarView(state.menus, state.mallType),
+                ]),
+              );
             case Status.success:
-              return Center(child: Text('${state.menus}'));
+              return DefaultTabController(
+                key: ValueKey<MallType>(state.mallType),
+                length: state.menus.length,
+                child: Column(children: [
+                  GlobalNavBar(state.menus),
+                  GlobalNavBarView(state.menus, state.mallType),
+                ]),
+              );
             case Status.error:
               return const Center(child: Text('error'));
           }
         },
         listener: (context, state) async {
-          if (state.status == Status.error) {
+          if (state.status.isError) {
             final bool result =
-                await CommonDialog.errorDialog(context, ErrorResponse(message: state.error.message)) ?? false;
+                (await CommonDialog.errorDialog(context, state.error)) ?? false;
+            if (result) {
+              context.read<MenuBloc>().add(MenuInitialized());
+            }
           }
         },
-        listenWhen: (previous, current) => previous.status != current.status,
+        listenWhen: (prev, curr) => prev.status != curr.status,
       ),
     );
   }

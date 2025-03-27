@@ -19,35 +19,40 @@ class GlobalNavBar extends StatelessWidget {
 
     return BlocBuilder<MenuBloc, MenuState>(
       builder: (context, state) {
-        return Stack(
-          children: [
-            TabBar(
-              tabs: List.generate(
-                menus.length,
-                (index) => Tab(text: menus[index].title),
+        return SizedBox(
+          height: 46,
+          child: Stack(
+            children: [
+              TabBar(
+                tabs: List.generate(
+                  menus.length,
+                  (index) => Tab(text: menus[index].title),
+                ),
+                indicator: UnderlineTabIndicator(
+                  borderSide: BorderSide(color: colorScheme.primary, width: 2),
+                ),
+                indicatorSize: TabBarIndicatorSize.label,
+                labelColor: colorScheme.primary,
+                labelStyle: textTheme.titleSmall?.semiBold,
+                labelPadding: EdgeInsets.symmetric(horizontal: 8),
+                unselectedLabelColor: colorScheme.contentSecondary,
+                unselectedLabelStyle: textTheme.titleSmall,
+                onTap: (index) {},
               ),
-              indicator: UnderlineTabIndicator(
-                borderSide: BorderSide(color: colorScheme.primary, width: 2),
-              ),
-              indicatorSize: TabBarIndicatorSize.label,
-              labelPadding: const EdgeInsets.symmetric(horizontal: 8),
-              labelStyle: textTheme.titleSmall.semiBold,
-              unselectedLabelStyle: textTheme.titleSmall.regular,
-              unselectedLabelColor: colorScheme.contentSecondary,
-            ),
-            if (state.status == Status.loading)
-              Positioned.fill(
-                child: ColoredBox(
-                  color: Colors.black.withValues(alpha: 0.2),
-                  child: Center(
-                    child: Transform.scale(
-                      scale: 0.5,
-                      child: const CircularProgressIndicator(),
+              if (state.status == Status.loading)
+                Positioned.fill(
+                  child: ColoredBox(
+                    color: Colors.black.withOpacity(0.2),
+                    child: Center(
+                      child: Transform.scale(
+                        scale: 0.5,
+                        child: CircularProgressIndicator(),
+                      ),
                     ),
                   ),
                 ),
-              ),
-          ],
+            ],
+          ),
         );
       },
     );

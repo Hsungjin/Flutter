@@ -4,7 +4,7 @@ import '../../../../core/utils/error/error_response.dart';
 
 part 'result.freezed.dart';
 
-@Freezed(genericArgumentFactories: true)
+@freezed
 abstract class Result<T> with _$Result<T> {
   const factory Result.success(T data) = Success;
 

@@ -16,6 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MenuState {
   Status get status;
+  MallType get mallType;
   List<MenuModel> get menus;
   ErrorResponse get error;
 
@@ -32,17 +33,19 @@ mixin _$MenuState {
         (other.runtimeType == runtimeType &&
             other is MenuState &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.mallType, mallType) ||
+                other.mallType == mallType) &&
             const DeepCollectionEquality().equals(other.menus, menus) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, status, const DeepCollectionEquality().hash(menus), error);
+  int get hashCode => Object.hash(runtimeType, status, mallType,
+      const DeepCollectionEquality().hash(menus), error);
 
   @override
   String toString() {
-    return 'MenuState(status: $status, menus: $menus, error: $error)';
+    return 'MenuState(status: $status, mallType: $mallType, menus: $menus, error: $error)';
   }
 }
 
@@ -51,7 +54,11 @@ abstract mixin class $MenuStateCopyWith<$Res> {
   factory $MenuStateCopyWith(MenuState value, $Res Function(MenuState) _then) =
       _$MenuStateCopyWithImpl;
   @useResult
-  $Res call({Status status, List<MenuModel> menus, ErrorResponse error});
+  $Res call(
+      {Status status,
+      MallType mallType,
+      List<MenuModel> menus,
+      ErrorResponse error});
 }
 
 /// @nodoc
@@ -67,6 +74,7 @@ class _$MenuStateCopyWithImpl<$Res> implements $MenuStateCopyWith<$Res> {
   @override
   $Res call({
     Object? status = null,
+    Object? mallType = null,
     Object? menus = null,
     Object? error = null,
   }) {
@@ -75,6 +83,10 @@ class _$MenuStateCopyWithImpl<$Res> implements $MenuStateCopyWith<$Res> {
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as Status,
+      mallType: null == mallType
+          ? _self.mallType
+          : mallType // ignore: cast_nullable_to_non_nullable
+              as MallType,
       menus: null == menus
           ? _self.menus
           : menus // ignore: cast_nullable_to_non_nullable
@@ -92,13 +104,17 @@ class _$MenuStateCopyWithImpl<$Res> implements $MenuStateCopyWith<$Res> {
 class _MenuState implements MenuState {
   _MenuState(
       {this.status = Status.initial,
-      final List<MenuModel> menus = const [],
+      this.mallType = MallType.market,
+      final List<MenuModel> menus = const <MenuModel>[],
       this.error = const ErrorResponse()})
       : _menus = menus;
 
   @override
   @JsonKey()
   final Status status;
+  @override
+  @JsonKey()
+  final MallType mallType;
   final List<MenuModel> _menus;
   @override
   @JsonKey()
@@ -126,17 +142,19 @@ class _MenuState implements MenuState {
         (other.runtimeType == runtimeType &&
             other is _MenuState &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.mallType, mallType) ||
+                other.mallType == mallType) &&
             const DeepCollectionEquality().equals(other._menus, _menus) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, status, const DeepCollectionEquality().hash(_menus), error);
+  int get hashCode => Object.hash(runtimeType, status, mallType,
+      const DeepCollectionEquality().hash(_menus), error);
 
   @override
   String toString() {
-    return 'MenuState(status: $status, menus: $menus, error: $error)';
+    return 'MenuState(status: $status, mallType: $mallType, menus: $menus, error: $error)';
   }
 }
 
@@ -148,7 +166,11 @@ abstract mixin class _$MenuStateCopyWith<$Res>
       __$MenuStateCopyWithImpl;
   @override
   @useResult
-  $Res call({Status status, List<MenuModel> menus, ErrorResponse error});
+  $Res call(
+      {Status status,
+      MallType mallType,
+      List<MenuModel> menus,
+      ErrorResponse error});
 }
 
 /// @nodoc
@@ -164,6 +186,7 @@ class __$MenuStateCopyWithImpl<$Res> implements _$MenuStateCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? status = null,
+    Object? mallType = null,
     Object? menus = null,
     Object? error = null,
   }) {
@@ -172,6 +195,10 @@ class __$MenuStateCopyWithImpl<$Res> implements _$MenuStateCopyWith<$Res> {
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as Status,
+      mallType: null == mallType
+          ? _self.mallType
+          : mallType // ignore: cast_nullable_to_non_nullable
+              as MallType,
       menus: null == menus
           ? _self._menus
           : menus // ignore: cast_nullable_to_non_nullable
