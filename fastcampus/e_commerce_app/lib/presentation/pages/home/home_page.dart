@@ -32,46 +32,46 @@ class HomePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<MallTypeCubit, MallType>(
-      listener: (context, state) =>
+      listener: (_, state) =>
           context.read<MenuBloc>().add(MenuInitialized(mallType: state)),
       listenWhen: (previous, current) => previous.index != current.index,
       child: BlocConsumer<MenuBloc, MenuState>(
         builder: (_, state) {
           switch (state.status) {
             case Status.initial:
-              return const Center(child: CircularProgressIndicator());
             case Status.loading:
               return DefaultTabController(
                 key: ValueKey<MallType>(state.mallType),
                 length: state.menus.length,
-                child: Column(children: [
-                  GlobalNavBar(state.menus),
-                  GlobalNavBarView(state.menus, state.mallType),
-                ]),
+                child: Column(
+                  children: [
+                    GlobalNavBar(state.menus),
+                    GlobalNavBarView(state.menus, state.mallType),
+                  ],
+                ),
               );
             case Status.success:
               return DefaultTabController(
-                key: ValueKey<MallType>(state.mallType),
                 length: state.menus.length,
-                child: Column(children: [
-                  GlobalNavBar(state.menus),
-                  GlobalNavBarView(state.menus, state.mallType),
-                ]),
+                child: Column(
+                  children: [
+                    GlobalNavBar(state.menus),
+                    GlobalNavBarView(state.menus, state.mallType),
+                  ],
+                ),
               );
             case Status.error:
               return const Center(child: Text('error'));
           }
         },
         listener: (context, state) async {
-          if (state.status.isError) {
-            final bool result =
-                (await CommonDialog.errorDialog(context, state.error)) ?? false;
-            if (result) {
-              context.read<MenuBloc>().add(MenuInitialized());
-            }
+          if (state.status == Status.error) {
+            final bool result = await CommonDialog.errorDialog(
+                    context, ErrorResponse(message: state.error.message)) ??
+                false;
           }
         },
-        listenWhen: (prev, curr) => prev.status != curr.status,
+        listenWhen: (previous, current) => previous.status != current.status,
       ),
     );
   }
