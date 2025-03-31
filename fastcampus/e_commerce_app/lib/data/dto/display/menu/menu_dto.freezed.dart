@@ -15,8 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$MenuDto implements DiagnosticableTreeMixin {
-  String get title;
-  int get tabId;
+  String? get title;
+  int? get tabId;
 
   /// Create a copy of MenuDto
   /// with the given fields replaced by the non-null parameter values.
@@ -60,7 +60,7 @@ abstract mixin class $MenuDtoCopyWith<$Res> {
   factory $MenuDtoCopyWith(MenuDto value, $Res Function(MenuDto) _then) =
       _$MenuDtoCopyWithImpl;
   @useResult
-  $Res call({String title, int tabId});
+  $Res call({String? title, int? tabId});
 }
 
 /// @nodoc
@@ -75,18 +75,18 @@ class _$MenuDtoCopyWithImpl<$Res> implements $MenuDtoCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? tabId = null,
+    Object? title = freezed,
+    Object? tabId = freezed,
   }) {
     return _then(_self.copyWith(
-      title: null == title
+      title: freezed == title
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      tabId: null == tabId
+              as String?,
+      tabId: freezed == tabId
           ? _self.tabId
           : tabId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -100,10 +100,10 @@ class _MenuDto with DiagnosticableTreeMixin implements MenuDto {
 
   @override
   @JsonKey()
-  final String title;
+  final String? title;
   @override
   @JsonKey()
-  final int tabId;
+  final int? tabId;
 
   /// Create a copy of MenuDto
   /// with the given fields replaced by the non-null parameter values.
@@ -153,7 +153,7 @@ abstract mixin class _$MenuDtoCopyWith<$Res> implements $MenuDtoCopyWith<$Res> {
       __$MenuDtoCopyWithImpl;
   @override
   @useResult
-  $Res call({String title, int tabId});
+  $Res call({String? title, int? tabId});
 }
 
 /// @nodoc
@@ -168,18 +168,18 @@ class __$MenuDtoCopyWithImpl<$Res> implements _$MenuDtoCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? title = null,
-    Object? tabId = null,
+    Object? title = freezed,
+    Object? tabId = freezed,
   }) {
     return _then(_MenuDto(
-      title: null == title
+      title: freezed == title
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      tabId: null == tabId
+              as String?,
+      tabId: freezed == tabId
           ? _self.tabId
           : tabId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
