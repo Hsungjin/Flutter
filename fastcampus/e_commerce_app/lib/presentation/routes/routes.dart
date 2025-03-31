@@ -10,12 +10,12 @@ final GoRouter router = GoRouter(
       path: RoutePath.splash,
       name: 'splash',
       builder: (context, state) => const SplashPage(),
-        ),
-        GoRoute(
-          path: RoutePath.main,
-          name: 'main',
-          builder: (context, state) => const MainScreen(),
-        ),
-      ],
+    ),
+    GoRoute(
+      path: RoutePath.main,
+      name: 'main',
+      builder: (context, state) => const MainScreen(),
+    ),
+  ],
   initialLocation: '/splash',
 );

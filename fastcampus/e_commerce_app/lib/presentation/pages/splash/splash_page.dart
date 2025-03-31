@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/theme/constant/app_icons.dart';
 import '../../routes/route_path.dart';
 
-// TODO 로그인 bloc
+//TODO 로그인 BLOC
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
@@ -15,6 +15,7 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
+//TODO 로그인 BLOC
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {

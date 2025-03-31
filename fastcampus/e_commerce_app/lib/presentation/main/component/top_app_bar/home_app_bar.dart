@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/theme/constant/app_icons.dart';
 import '../../../../core/theme/custom/custom_app_bar.dart';
@@ -26,40 +25,47 @@ class HomeAppBar extends StatelessWidget {
               padding: 8,
             ),
             title: AnimatedContainer(
-                decoration: BoxDecoration(
-                  color: state.theme.containerColor,
-                  borderRadius: BorderRadius.all(Radius.circular(CustomAppBarTheme.tabBarRadius)),
-                ),
-                child: SizedBox(
-                  height: 28,
-                  child: DefaultTabController(
-                    length: MallType.values.length,
-                    initialIndex: state.index,
-                    child: TabBar(
-                        tabs: List.generate(
-                            MallType.values.length,
-                            (index) =>
-                                Tab(text: MallType.values[index].toName),),
-                        isScrollable: false,
-                        indicator: BoxDecoration(
-                            color: state.theme.indicatorColor,
-                            borderRadius: BorderRadius.all(Radius.circular(CustomAppBarTheme.tabBarRadius)),),
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        dividerColor: Colors.transparent,
-                          labelColor: state.theme.labelColor,
-                        labelStyle: Theme.of(context).textTheme.labelLarge.bold,
-                        labelPadding:
-                            const EdgeInsets.symmetric(horizontal: 12),
-                        unselectedLabelColor: state.theme.unselectedLabelColor,
-                        unselectedLabelStyle:
-                            Theme.of(context).textTheme.labelLarge,
-                        onTap: (index) =>
-                            context.read<MallTypeCubit>().changeIndex(index),
-                        splashBorderRadius: BorderRadius.all(Radius.circular(CustomAppBarTheme.tabBarRadius)),),
+              decoration: BoxDecoration(
+                color: state.theme.containerColor,
+                borderRadius: BorderRadius.all(
+                    Radius.circular(CustomAppBarTheme.tabBarRadius)),
+              ),
+              child: SizedBox(
+                height: 28,
+                child: DefaultTabController(
+                  length: MallType.values.length,
+                  initialIndex: state.index,
+                  child: TabBar(
+                    tabs: List.generate(
+                      MallType.values.length,
+                      (index) => Tab(text: MallType.values[index].toName),
+                    ),
+                    isScrollable: false,
+                    indicator: BoxDecoration(
+                      color: state.theme.indicatorColor,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(CustomAppBarTheme.tabBarRadius),
+                      ),
+                    ),
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    dividerColor: Colors.transparent,
+                    labelColor: state.theme.labelColor,
+                    labelStyle: Theme.of(context).textTheme.labelLarge.bold,
+                    labelPadding: const EdgeInsets.symmetric(horizontal: 12),
+                    unselectedLabelColor: state.theme.unselectedLabelColor,
+                    unselectedLabelStyle:
+                        Theme.of(context).textTheme.labelLarge,
+                    onTap: (index) =>
+                        context.read<MallTypeCubit>().changeIndex(index),
+                    splashBorderRadius: BorderRadius.all(
+                      Radius.circular(CustomAppBarTheme.tabBarRadius),
+                    ),
                   ),
                 ),
-                duration: Duration(milliseconds: CustomAppBarTheme.animationDuration),
               ),
+              duration:
+                  Duration(milliseconds: CustomAppBarTheme.animationDuration),
+            ),
             actions: [
               SvgIconButton(
                 icon: AppIcons.location,
