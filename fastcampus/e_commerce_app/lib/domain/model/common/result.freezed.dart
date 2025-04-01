@@ -125,7 +125,7 @@ class Error<T> implements Result<T> {
 
   @override
   String toString() {
-    return 'Result<$T>.error(error: $error)';
+    return 'Result<$T>.failure(error: $error)';
   }
 }
 

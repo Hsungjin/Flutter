@@ -2,7 +2,6 @@ import '../../core/utils/constant.dart';
 import '../../data/data_source/remote/display/display_api.dart';
 import '../../domain/model/display/display_model.dart';
 import '../../domain/repository/display_repository.dart';
-import '../../presentation/main/cubit/mall_type_cubit.dart';
 import '../dto/common/response_wrapper.dart';
 import '../mapper/common_mapper.dart';
 import '../mapper/dispalay_mapper.dart';

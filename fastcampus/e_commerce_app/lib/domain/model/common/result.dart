@@ -5,8 +5,8 @@ import '../../../../core/utils/error/error_response.dart';
 part 'result.freezed.dart';
 
 @freezed
-abstract class Result<T> with _$Result<T> {
+class Result<T> with _$Result<T> {
   const factory Result.success(T data) = Success;
 
-  const factory Result.error(ErrorResponse error) = Error;
+  const factory Result.failure(ErrorResponse error) = Error;
 }

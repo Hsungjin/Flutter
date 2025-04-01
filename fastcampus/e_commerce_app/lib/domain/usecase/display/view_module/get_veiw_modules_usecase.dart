@@ -15,7 +15,7 @@ class GetViewModulesUsecase extends RemoteUsecase<DisplayRepository> {
 
     return result.status == 'SUCCESS'
         ? Result.success(result.data ?? [])
-        : Result.error(
+        : Result.failure(
             ErrorResponse(
               status: result.status,
               code: result.code,

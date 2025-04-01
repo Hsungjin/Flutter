@@ -7,7 +7,6 @@ import 'package:e_commerce_app/domain/model/display/menu/menu_model.dart';
 import 'package:e_commerce_app/domain/repository/display_repository.dart';
 import 'package:e_commerce_app/domain/usecase/display/display_usecase.dart';
 import 'package:e_commerce_app/domain/usecase/display/menu/get_menus_usecase.dart';
-import 'package:e_commerce_app/presentation/main/cubit/mall_type_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -42,7 +41,7 @@ void main() {
   });
 
     test('메뉴 리스트 불러오기 실패', () async {
-    final result = Result<List<MenuModel>>.error(ErrorResponse(message: 'error'));
+    final result = Result<List<MenuModel>>.failure(ErrorResponse(message: 'error'));
     final usecase = MockGetMenusUsecase();
 
     when(() => usecase.mallType).thenReturn(MallType.market);
