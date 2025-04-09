@@ -1,41 +1,28 @@
+import 'package:e_commerce_app/presentation/main/cubit/bottom_nav_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/utils/constant.dart';
-import '../../cubit/bottom_nav_cubit.dart';
-import '../../cubit/mall_type_cubit.dart';
 
 class DefaultAppBar extends StatelessWidget {
-  const DefaultAppBar(this.bottomNav, {super.key});
   final BottomNav bottomNav;
+
+  const DefaultAppBar(this.bottomNav, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MallTypeCubit, MallType>(
-      builder: (_, state) {
-        return Container(
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-          color: (state.isMarket)
-              ? Theme.of(context).colorScheme.primary
-              : Theme.of(context).colorScheme.surface,
-          child: AppBar(
-            title: Text(
-              bottomNav.toName,
-              style: TextStyle(
-                color: (state.isMarket)
-                    ? Theme.of(context).colorScheme.onPrimary
-                    : Theme.of(context).colorScheme.primary,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            backgroundColor: (state.isMarket)
-                ? Theme.of(context).colorScheme.primary
-                : Theme.of(context).colorScheme.surface,
-            centerTitle: true,
+    return Container(
+      color: Theme.of(context).colorScheme.primary,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: AppBar(
+          title: Text(
+            bottomNav.toName,
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(color: Colors.white),
           ),
-        );
-      },
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+        ),
+      ),
     );
   }
 }

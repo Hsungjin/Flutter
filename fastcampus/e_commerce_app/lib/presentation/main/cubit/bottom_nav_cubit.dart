@@ -1,15 +1,15 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../core/theme/constant/app_icons.dart';
+import 'package:bloc/bloc.dart';
+import 'package:e_commerce_app/core/theme/constant/app_icons.dart';
 
 enum BottomNav { home, category, search, user }
 
 class BottomNavCubit extends Cubit<BottomNav> {
   BottomNavCubit() : super(BottomNav.home);
 
-  void changeIndex(int index) => emit(BottomNav.values[index]);
+  void changeIndex(int index) {
+    emit(BottomNav.values[index]);
+  }
 }
-
 
 extension BottomNavX on BottomNav {
   String get icon {

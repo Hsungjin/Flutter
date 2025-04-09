@@ -1,26 +1,21 @@
+import 'package:e_commerce_app/core/theme/constant/app_icons.dart';
+import 'package:e_commerce_app/presentation/main/component/top_app_bar/top_app_bar.dart';
+import 'package:e_commerce_app/presentation/main/cubit/bottom_nav_cubit.dart';
+import 'package:e_commerce_app/presentation/pages/category/category_page.dart';
+import 'package:e_commerce_app/presentation/pages/home/home_page.dart';
+import 'package:e_commerce_app/presentation/pages/search/search_page.dart';
+import 'package:e_commerce_app/presentation/pages/user/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../core/theme/constant/app_icons.dart';
-import '../pages/category/category_page.dart';
-import '../pages/home/home_page.dart';
-import '../pages/search/search_page.dart';
-import '../pages/user/user_page.dart';
-import 'component/top_app_bar/top_app_bar.dart';
-import 'cubit/bottom_nav_cubit.dart';
-import 'cubit/mall_type_cubit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => BottomNavCubit()),
-        BlocProvider(create: (_) => MallTypeCubit()),
-      ],
+    return BlocProvider(
+      create: (context) => BottomNavCubit(),
       child: const MainScreenView(),
     );
   }
@@ -32,7 +27,7 @@ class MainScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: const TopAppBar(),
+      appBar: const TopAppBar(),
       body: BlocBuilder<BottomNavCubit, BottomNav>(
         builder: (_, state) {
           switch (state) {
@@ -50,22 +45,21 @@ class MainScreenView extends StatelessWidget {
       bottomNavigationBar: BlocBuilder<BottomNavCubit, BottomNav>(
         builder: (_, state) {
           return BottomNavigationBar(
+            showUnselectedLabels: false,
+            showSelectedLabels: false,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: state.index,
+            onTap: (index) => context.read<BottomNavCubit>().changeIndex(index),
             items: List.generate(
               BottomNav.values.length,
               (index) => BottomNavigationBarItem(
                 icon: SvgPicture.asset(BottomNav.values[index].icon),
+                activeIcon: SvgPicture.asset(BottomNav.values[index].activeIcon),
                 label: BottomNav.values[index].toName,
-                activeIcon:
-                    SvgPicture.asset(BottomNav.values[index].activeIcon),
               ),
             ),
-            onTap: (index) => context.read<BottomNavCubit>().changeIndex(index),
-            currentIndex: state.index,
-            type: BottomNavigationBarType.fixed,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
           );
-        },
+        }
       ),
     );
   }
