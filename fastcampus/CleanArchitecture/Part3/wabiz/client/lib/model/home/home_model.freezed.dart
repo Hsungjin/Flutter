@@ -302,7 +302,7 @@ as List<HomeItemModel>,
 /// @nodoc
 mixin _$HomeItemModel implements DiagnosticableTreeMixin {
 
- int? get id; int? get categoryId; int? get projectTypeId; String? get userId; String? get title; String? get owner; int? get price; String? get thumbnail; String? get deadline; String? get description; int? get waitlistCount; int? get totalFundedCount; int? get totalFunded; String? get isOpen; String? get category; String? get type;
+ int? get id; int? get categoryId; int? get projectTypeId; String? get userId; String? get title; String? get owner; int? get price; String? get thumbnail; String? get count; String? get deadline; String? get description; int? get waitlistCount; int? get totalFundedCount; int? get totalFunded; String? get isOpen; String? get category; String? get type;
 /// Create a copy of HomeItemModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -316,21 +316,21 @@ $HomeItemModelCopyWith<HomeItemModel> get copyWith => _$HomeItemModelCopyWithImp
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'HomeItemModel'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('categoryId', categoryId))..add(DiagnosticsProperty('projectTypeId', projectTypeId))..add(DiagnosticsProperty('userId', userId))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('owner', owner))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('thumbnail', thumbnail))..add(DiagnosticsProperty('deadline', deadline))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('waitlistCount', waitlistCount))..add(DiagnosticsProperty('totalFundedCount', totalFundedCount))..add(DiagnosticsProperty('totalFunded', totalFunded))..add(DiagnosticsProperty('isOpen', isOpen))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('type', type));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('categoryId', categoryId))..add(DiagnosticsProperty('projectTypeId', projectTypeId))..add(DiagnosticsProperty('userId', userId))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('owner', owner))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('thumbnail', thumbnail))..add(DiagnosticsProperty('count', count))..add(DiagnosticsProperty('deadline', deadline))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('waitlistCount', waitlistCount))..add(DiagnosticsProperty('totalFundedCount', totalFundedCount))..add(DiagnosticsProperty('totalFunded', totalFunded))..add(DiagnosticsProperty('isOpen', isOpen))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('type', type));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeItemModel&&(identical(other.id, id) || other.id == id)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.projectTypeId, projectTypeId) || other.projectTypeId == projectTypeId)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.title, title) || other.title == title)&&(identical(other.owner, owner) || other.owner == owner)&&(identical(other.price, price) || other.price == price)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.deadline, deadline) || other.deadline == deadline)&&(identical(other.description, description) || other.description == description)&&(identical(other.waitlistCount, waitlistCount) || other.waitlistCount == waitlistCount)&&(identical(other.totalFundedCount, totalFundedCount) || other.totalFundedCount == totalFundedCount)&&(identical(other.totalFunded, totalFunded) || other.totalFunded == totalFunded)&&(identical(other.isOpen, isOpen) || other.isOpen == isOpen)&&(identical(other.category, category) || other.category == category)&&(identical(other.type, type) || other.type == type));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeItemModel&&(identical(other.id, id) || other.id == id)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.projectTypeId, projectTypeId) || other.projectTypeId == projectTypeId)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.title, title) || other.title == title)&&(identical(other.owner, owner) || other.owner == owner)&&(identical(other.price, price) || other.price == price)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.count, count) || other.count == count)&&(identical(other.deadline, deadline) || other.deadline == deadline)&&(identical(other.description, description) || other.description == description)&&(identical(other.waitlistCount, waitlistCount) || other.waitlistCount == waitlistCount)&&(identical(other.totalFundedCount, totalFundedCount) || other.totalFundedCount == totalFundedCount)&&(identical(other.totalFunded, totalFunded) || other.totalFunded == totalFunded)&&(identical(other.isOpen, isOpen) || other.isOpen == isOpen)&&(identical(other.category, category) || other.category == category)&&(identical(other.type, type) || other.type == type));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,categoryId,projectTypeId,userId,title,owner,price,thumbnail,deadline,description,waitlistCount,totalFundedCount,totalFunded,isOpen,category,type);
+int get hashCode => Object.hash(runtimeType,id,categoryId,projectTypeId,userId,title,owner,price,thumbnail,count,deadline,description,waitlistCount,totalFundedCount,totalFunded,isOpen,category,type);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'HomeItemModel(id: $id, categoryId: $categoryId, projectTypeId: $projectTypeId, userId: $userId, title: $title, owner: $owner, price: $price, thumbnail: $thumbnail, deadline: $deadline, description: $description, waitlistCount: $waitlistCount, totalFundedCount: $totalFundedCount, totalFunded: $totalFunded, isOpen: $isOpen, category: $category, type: $type)';
+  return 'HomeItemModel(id: $id, categoryId: $categoryId, projectTypeId: $projectTypeId, userId: $userId, title: $title, owner: $owner, price: $price, thumbnail: $thumbnail, count: $count, deadline: $deadline, description: $description, waitlistCount: $waitlistCount, totalFundedCount: $totalFundedCount, totalFunded: $totalFunded, isOpen: $isOpen, category: $category, type: $type)';
 }
 
 
@@ -341,7 +341,7 @@ abstract mixin class $HomeItemModelCopyWith<$Res>  {
   factory $HomeItemModelCopyWith(HomeItemModel value, $Res Function(HomeItemModel) _then) = _$HomeItemModelCopyWithImpl;
 @useResult
 $Res call({
- int? id, int? categoryId, int? projectTypeId, String? userId, String? title, String? owner, int? price, String? thumbnail, String? deadline, String? description, int? waitlistCount, int? totalFundedCount, int? totalFunded, String? isOpen, String? category, String? type
+ int? id, int? categoryId, int? projectTypeId, String? userId, String? title, String? owner, int? price, String? thumbnail, String? count, String? deadline, String? description, int? waitlistCount, int? totalFundedCount, int? totalFunded, String? isOpen, String? category, String? type
 });
 
 
@@ -358,7 +358,7 @@ class _$HomeItemModelCopyWithImpl<$Res>
 
 /// Create a copy of HomeItemModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? categoryId = freezed,Object? projectTypeId = freezed,Object? userId = freezed,Object? title = freezed,Object? owner = freezed,Object? price = freezed,Object? thumbnail = freezed,Object? deadline = freezed,Object? description = freezed,Object? waitlistCount = freezed,Object? totalFundedCount = freezed,Object? totalFunded = freezed,Object? isOpen = freezed,Object? category = freezed,Object? type = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? categoryId = freezed,Object? projectTypeId = freezed,Object? userId = freezed,Object? title = freezed,Object? owner = freezed,Object? price = freezed,Object? thumbnail = freezed,Object? count = freezed,Object? deadline = freezed,Object? description = freezed,Object? waitlistCount = freezed,Object? totalFundedCount = freezed,Object? totalFunded = freezed,Object? isOpen = freezed,Object? category = freezed,Object? type = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
@@ -368,6 +368,7 @@ as String?,title: freezed == title ? _self.title : title // ignore: cast_nullabl
 as String?,owner: freezed == owner ? _self.owner : owner // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as int?,thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
+as String?,count: freezed == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
 as String?,deadline: freezed == deadline ? _self.deadline : deadline // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,waitlistCount: freezed == waitlistCount ? _self.waitlistCount : waitlistCount // ignore: cast_nullable_to_non_nullable
@@ -461,10 +462,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? categoryId,  int? projectTypeId,  String? userId,  String? title,  String? owner,  int? price,  String? thumbnail,  String? deadline,  String? description,  int? waitlistCount,  int? totalFundedCount,  int? totalFunded,  String? isOpen,  String? category,  String? type)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? categoryId,  int? projectTypeId,  String? userId,  String? title,  String? owner,  int? price,  String? thumbnail,  String? count,  String? deadline,  String? description,  int? waitlistCount,  int? totalFundedCount,  int? totalFunded,  String? isOpen,  String? category,  String? type)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomeItemModel() when $default != null:
-return $default(_that.id,_that.categoryId,_that.projectTypeId,_that.userId,_that.title,_that.owner,_that.price,_that.thumbnail,_that.deadline,_that.description,_that.waitlistCount,_that.totalFundedCount,_that.totalFunded,_that.isOpen,_that.category,_that.type);case _:
+return $default(_that.id,_that.categoryId,_that.projectTypeId,_that.userId,_that.title,_that.owner,_that.price,_that.thumbnail,_that.count,_that.deadline,_that.description,_that.waitlistCount,_that.totalFundedCount,_that.totalFunded,_that.isOpen,_that.category,_that.type);case _:
   return orElse();
 
 }
@@ -482,10 +483,10 @@ return $default(_that.id,_that.categoryId,_that.projectTypeId,_that.userId,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? categoryId,  int? projectTypeId,  String? userId,  String? title,  String? owner,  int? price,  String? thumbnail,  String? deadline,  String? description,  int? waitlistCount,  int? totalFundedCount,  int? totalFunded,  String? isOpen,  String? category,  String? type)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? categoryId,  int? projectTypeId,  String? userId,  String? title,  String? owner,  int? price,  String? thumbnail,  String? count,  String? deadline,  String? description,  int? waitlistCount,  int? totalFundedCount,  int? totalFunded,  String? isOpen,  String? category,  String? type)  $default,) {final _that = this;
 switch (_that) {
 case _HomeItemModel():
-return $default(_that.id,_that.categoryId,_that.projectTypeId,_that.userId,_that.title,_that.owner,_that.price,_that.thumbnail,_that.deadline,_that.description,_that.waitlistCount,_that.totalFundedCount,_that.totalFunded,_that.isOpen,_that.category,_that.type);case _:
+return $default(_that.id,_that.categoryId,_that.projectTypeId,_that.userId,_that.title,_that.owner,_that.price,_that.thumbnail,_that.count,_that.deadline,_that.description,_that.waitlistCount,_that.totalFundedCount,_that.totalFunded,_that.isOpen,_that.category,_that.type);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -502,10 +503,10 @@ return $default(_that.id,_that.categoryId,_that.projectTypeId,_that.userId,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? categoryId,  int? projectTypeId,  String? userId,  String? title,  String? owner,  int? price,  String? thumbnail,  String? deadline,  String? description,  int? waitlistCount,  int? totalFundedCount,  int? totalFunded,  String? isOpen,  String? category,  String? type)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? categoryId,  int? projectTypeId,  String? userId,  String? title,  String? owner,  int? price,  String? thumbnail,  String? count,  String? deadline,  String? description,  int? waitlistCount,  int? totalFundedCount,  int? totalFunded,  String? isOpen,  String? category,  String? type)?  $default,) {final _that = this;
 switch (_that) {
 case _HomeItemModel() when $default != null:
-return $default(_that.id,_that.categoryId,_that.projectTypeId,_that.userId,_that.title,_that.owner,_that.price,_that.thumbnail,_that.deadline,_that.description,_that.waitlistCount,_that.totalFundedCount,_that.totalFunded,_that.isOpen,_that.category,_that.type);case _:
+return $default(_that.id,_that.categoryId,_that.projectTypeId,_that.userId,_that.title,_that.owner,_that.price,_that.thumbnail,_that.count,_that.deadline,_that.description,_that.waitlistCount,_that.totalFundedCount,_that.totalFunded,_that.isOpen,_that.category,_that.type);case _:
   return null;
 
 }
@@ -517,7 +518,7 @@ return $default(_that.id,_that.categoryId,_that.projectTypeId,_that.userId,_that
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _HomeItemModel with DiagnosticableTreeMixin implements HomeItemModel {
-  const _HomeItemModel({this.id, this.categoryId, this.projectTypeId, this.userId, this.title, this.owner, this.price, this.thumbnail, this.deadline, this.description, this.waitlistCount, this.totalFundedCount, this.totalFunded, this.isOpen, this.category, this.type});
+  const _HomeItemModel({this.id, this.categoryId, this.projectTypeId, this.userId, this.title, this.owner, this.price, this.thumbnail, this.count, this.deadline, this.description, this.waitlistCount, this.totalFundedCount, this.totalFunded, this.isOpen, this.category, this.type});
   factory _HomeItemModel.fromJson(Map<String, dynamic> json) => _$HomeItemModelFromJson(json);
 
 @override final  int? id;
@@ -528,6 +529,7 @@ class _HomeItemModel with DiagnosticableTreeMixin implements HomeItemModel {
 @override final  String? owner;
 @override final  int? price;
 @override final  String? thumbnail;
+@override final  String? count;
 @override final  String? deadline;
 @override final  String? description;
 @override final  int? waitlistCount;
@@ -551,21 +553,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'HomeItemModel'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('categoryId', categoryId))..add(DiagnosticsProperty('projectTypeId', projectTypeId))..add(DiagnosticsProperty('userId', userId))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('owner', owner))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('thumbnail', thumbnail))..add(DiagnosticsProperty('deadline', deadline))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('waitlistCount', waitlistCount))..add(DiagnosticsProperty('totalFundedCount', totalFundedCount))..add(DiagnosticsProperty('totalFunded', totalFunded))..add(DiagnosticsProperty('isOpen', isOpen))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('type', type));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('categoryId', categoryId))..add(DiagnosticsProperty('projectTypeId', projectTypeId))..add(DiagnosticsProperty('userId', userId))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('owner', owner))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('thumbnail', thumbnail))..add(DiagnosticsProperty('count', count))..add(DiagnosticsProperty('deadline', deadline))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('waitlistCount', waitlistCount))..add(DiagnosticsProperty('totalFundedCount', totalFundedCount))..add(DiagnosticsProperty('totalFunded', totalFunded))..add(DiagnosticsProperty('isOpen', isOpen))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('type', type));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeItemModel&&(identical(other.id, id) || other.id == id)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.projectTypeId, projectTypeId) || other.projectTypeId == projectTypeId)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.title, title) || other.title == title)&&(identical(other.owner, owner) || other.owner == owner)&&(identical(other.price, price) || other.price == price)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.deadline, deadline) || other.deadline == deadline)&&(identical(other.description, description) || other.description == description)&&(identical(other.waitlistCount, waitlistCount) || other.waitlistCount == waitlistCount)&&(identical(other.totalFundedCount, totalFundedCount) || other.totalFundedCount == totalFundedCount)&&(identical(other.totalFunded, totalFunded) || other.totalFunded == totalFunded)&&(identical(other.isOpen, isOpen) || other.isOpen == isOpen)&&(identical(other.category, category) || other.category == category)&&(identical(other.type, type) || other.type == type));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeItemModel&&(identical(other.id, id) || other.id == id)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.projectTypeId, projectTypeId) || other.projectTypeId == projectTypeId)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.title, title) || other.title == title)&&(identical(other.owner, owner) || other.owner == owner)&&(identical(other.price, price) || other.price == price)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.count, count) || other.count == count)&&(identical(other.deadline, deadline) || other.deadline == deadline)&&(identical(other.description, description) || other.description == description)&&(identical(other.waitlistCount, waitlistCount) || other.waitlistCount == waitlistCount)&&(identical(other.totalFundedCount, totalFundedCount) || other.totalFundedCount == totalFundedCount)&&(identical(other.totalFunded, totalFunded) || other.totalFunded == totalFunded)&&(identical(other.isOpen, isOpen) || other.isOpen == isOpen)&&(identical(other.category, category) || other.category == category)&&(identical(other.type, type) || other.type == type));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,categoryId,projectTypeId,userId,title,owner,price,thumbnail,deadline,description,waitlistCount,totalFundedCount,totalFunded,isOpen,category,type);
+int get hashCode => Object.hash(runtimeType,id,categoryId,projectTypeId,userId,title,owner,price,thumbnail,count,deadline,description,waitlistCount,totalFundedCount,totalFunded,isOpen,category,type);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'HomeItemModel(id: $id, categoryId: $categoryId, projectTypeId: $projectTypeId, userId: $userId, title: $title, owner: $owner, price: $price, thumbnail: $thumbnail, deadline: $deadline, description: $description, waitlistCount: $waitlistCount, totalFundedCount: $totalFundedCount, totalFunded: $totalFunded, isOpen: $isOpen, category: $category, type: $type)';
+  return 'HomeItemModel(id: $id, categoryId: $categoryId, projectTypeId: $projectTypeId, userId: $userId, title: $title, owner: $owner, price: $price, thumbnail: $thumbnail, count: $count, deadline: $deadline, description: $description, waitlistCount: $waitlistCount, totalFundedCount: $totalFundedCount, totalFunded: $totalFunded, isOpen: $isOpen, category: $category, type: $type)';
 }
 
 
@@ -576,7 +578,7 @@ abstract mixin class _$HomeItemModelCopyWith<$Res> implements $HomeItemModelCopy
   factory _$HomeItemModelCopyWith(_HomeItemModel value, $Res Function(_HomeItemModel) _then) = __$HomeItemModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, int? categoryId, int? projectTypeId, String? userId, String? title, String? owner, int? price, String? thumbnail, String? deadline, String? description, int? waitlistCount, int? totalFundedCount, int? totalFunded, String? isOpen, String? category, String? type
+ int? id, int? categoryId, int? projectTypeId, String? userId, String? title, String? owner, int? price, String? thumbnail, String? count, String? deadline, String? description, int? waitlistCount, int? totalFundedCount, int? totalFunded, String? isOpen, String? category, String? type
 });
 
 
@@ -593,7 +595,7 @@ class __$HomeItemModelCopyWithImpl<$Res>
 
 /// Create a copy of HomeItemModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? categoryId = freezed,Object? projectTypeId = freezed,Object? userId = freezed,Object? title = freezed,Object? owner = freezed,Object? price = freezed,Object? thumbnail = freezed,Object? deadline = freezed,Object? description = freezed,Object? waitlistCount = freezed,Object? totalFundedCount = freezed,Object? totalFunded = freezed,Object? isOpen = freezed,Object? category = freezed,Object? type = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? categoryId = freezed,Object? projectTypeId = freezed,Object? userId = freezed,Object? title = freezed,Object? owner = freezed,Object? price = freezed,Object? thumbnail = freezed,Object? count = freezed,Object? deadline = freezed,Object? description = freezed,Object? waitlistCount = freezed,Object? totalFundedCount = freezed,Object? totalFunded = freezed,Object? isOpen = freezed,Object? category = freezed,Object? type = freezed,}) {
   return _then(_HomeItemModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
@@ -603,6 +605,7 @@ as String?,title: freezed == title ? _self.title : title // ignore: cast_nullabl
 as String?,owner: freezed == owner ? _self.owner : owner // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as int?,thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
+as String?,count: freezed == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
 as String?,deadline: freezed == deadline ? _self.deadline : deadline // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,waitlistCount: freezed == waitlistCount ? _self.waitlistCount : waitlistCount // ignore: cast_nullable_to_non_nullable

@@ -98,7 +98,7 @@ final class FetchHomeProjectProvider
   }
 }
 
-String _$fetchHomeProjectHash() => r'b09c82c548602e0590a38bfe2c4e21639eeff167';
+String _$fetchHomeProjectHash() => r'f282b5414c2aa2bbdc7a92a0e39da5bc9fe2f1ac';
 
 @ProviderFor(fetchHomeCategories)
 const fetchHomeCategoriesProvider = FetchHomeCategoriesProvider._();

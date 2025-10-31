@@ -1,30 +1,33 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_model.dart';
+part of 'category_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_HomeModel _$HomeModelFromJson(Map<String, dynamic> json) => _HomeModel(
-  status: json['status'] as String?,
-  totalCount: (json['total_count'] as num?)?.toInt(),
-  projects:
-      (json['projects'] as List<dynamic>?)
-          ?.map((e) => HomeItemModel.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-      const [],
-);
+_CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
+    _CategoryModel(
+      status: json['status'] as String?,
+      totalCount: (json['total_count'] as num?)?.toInt(),
+      projects:
+          (json['projects'] as List<dynamic>?)
+              ?.map(
+                (e) => CategoryItemModel.fromJson(e as Map<String, dynamic>),
+              )
+              .toList() ??
+          const [],
+    );
 
-Map<String, dynamic> _$HomeModelToJson(_HomeModel instance) =>
+Map<String, dynamic> _$CategoryModelToJson(_CategoryModel instance) =>
     <String, dynamic>{
       'status': instance.status,
       'total_count': instance.totalCount,
       'projects': instance.projects,
     };
 
-_HomeItemModel _$HomeItemModelFromJson(Map<String, dynamic> json) =>
-    _HomeItemModel(
+_CategoryItemModel _$CategoryItemModelFromJson(Map<String, dynamic> json) =>
+    _CategoryItemModel(
       id: (json['id'] as num?)?.toInt(),
       categoryId: (json['category_id'] as num?)?.toInt(),
       projectTypeId: (json['project_type_id'] as num?)?.toInt(),
@@ -42,9 +45,15 @@ _HomeItemModel _$HomeItemModelFromJson(Map<String, dynamic> json) =>
       isOpen: json['is_open'] as String?,
       category: json['category'] as String?,
       type: json['type'] as String?,
+      projectType: json['project_type'] as String?,
+      image:
+          (json['image'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList() ??
+          const [],
     );
 
-Map<String, dynamic> _$HomeItemModelToJson(_HomeItemModel instance) =>
+Map<String, dynamic> _$CategoryItemModelToJson(_CategoryItemModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'category_id': instance.categoryId,
@@ -63,4 +72,6 @@ Map<String, dynamic> _$HomeItemModelToJson(_HomeItemModel instance) =>
       'is_open': instance.isOpen,
       'category': instance.category,
       'type': instance.type,
+      'project_type': instance.projectType,
+      'image': instance.image,
     };

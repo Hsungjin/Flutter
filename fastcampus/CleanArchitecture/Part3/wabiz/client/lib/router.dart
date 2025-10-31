@@ -1,3 +1,4 @@
+import 'package:client/views/category/category_page.dart';
 import 'package:client/views/home/home_page.dart';
 import 'package:client/views/wabiz_app_shell.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,19 @@ final router = GoRouter(
       builder: (context, state, child) =>
           WabizAppShell(currentIndex: 0, child: child),
       routes: [
-        GoRoute(path: '/home', builder: (context, state) => const HomePage()),
+        GoRoute(
+          path: '/home',
+          builder: (context, state) => const HomePage(),
+          routes: [
+            GoRoute(
+              path: '/category/:id',
+              builder: (context, state) {
+                final id = state.pathParameters['id'];
+                return CategoryPage(categoryId: id ?? "1");
+              },
+            ),
+          ],
+        ),
       ],
     ),
   ],
