@@ -188,9 +188,9 @@ class _MyPageState extends State<MyPage> {
                                 content: Text("로그인 후 프로젝트 만들기를 할 수 있습니다."),
                               ),
                             );
-                          } else {
-                            // TODO: 프로젝트 만들기 화면으로 이동
+                            return;
                           }
+                          context.push("/add");
                         },
                         child: Container(
                           height: 50,

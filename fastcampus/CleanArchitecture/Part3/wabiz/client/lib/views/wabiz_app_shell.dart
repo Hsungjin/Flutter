@@ -1,8 +1,10 @@
 import 'package:client/theme.dart';
+import 'package:client/view_model/login/login_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class WabizAppShell extends StatefulWidget {
+class WabizAppShell extends ConsumerStatefulWidget {
   const WabizAppShell({
     super.key,
     required this.child,
@@ -13,17 +15,26 @@ class WabizAppShell extends StatefulWidget {
   final int currentIndex;
 
   @override
-  State<WabizAppShell> createState() => _WabizAppShellState();
+  ConsumerState<WabizAppShell> createState() => _WabizAppShellState();
 }
 
-class _WabizAppShellState extends State<WabizAppShell> {
+class _WabizAppShellState extends ConsumerState<WabizAppShell> {
   void _onItemTap(int index, BuildContext context) {
     switch (index) {
       case 0:
         GoRouter.of(context).go("/home");
         break;
       case 1:
-        GoRouter.of(context).go("/home");
+        final loginState = ref.watch(loginViewModelProvider);
+        if (loginState.isLogin) {
+          GoRouter.of(context).push("/add");
+        } else {
+          showDialog(
+            context: context,
+            builder: (context) =>
+                AlertDialog(content: Text("로그인 후 프로젝트 만들기를 할 수 있습니다.")),
+          );
+        }
         break;
       case 2:
         GoRouter.of(context).go("/home");
@@ -67,7 +78,7 @@ class _WabizAppShellState extends State<WabizAppShell> {
           ),
         ],
         currentIndex: widget.currentIndex,
-        onTap: (index) => _onItemTap(index, context)
+        onTap: (index) => _onItemTap(index, context),
       ),
     );
   }

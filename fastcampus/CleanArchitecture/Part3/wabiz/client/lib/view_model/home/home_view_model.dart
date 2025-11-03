@@ -14,7 +14,7 @@ abstract class HomeState with _$HomeState {
 
 @riverpod
 class HomeViewModel extends _$HomeViewModel {
-  HomeRepository? homeRepository;
+  late final HomeRepository homeRepository;
 
   @override
   HomeState? build() {
@@ -22,13 +22,13 @@ class HomeViewModel extends _$HomeViewModel {
     return null;
   }
 
-  update(List<HomeItemModel> projects) {
+  void update(List<HomeItemModel> projects) {
     state = state?.copyWith(projects: [...projects]);
   }
 
   Future<HomeModel?> fetchHomeData() async {
-    final result = await homeRepository?.getHomeProjects();
-    update(result?.projects ?? []);
+    final result = await homeRepository.getHomeProjects();
+    update(result.projects);
     return result;
   }
 }
