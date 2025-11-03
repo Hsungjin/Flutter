@@ -1,5 +1,7 @@
 import 'package:client/views/category/category_page.dart';
 import 'package:client/views/home/home_page.dart';
+import 'package:client/views/login/sign_in_page.dart';
+import 'package:client/views/login/sign_up_page.dart';
 import 'package:client/views/my_page/my_page.dart';
 import 'package:client/views/wabiz_app_shell.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +48,16 @@ final router = GoRouter(
           builder: (context, state) => const MyPage(),
         ),
       ],
+    ),
+    GoRoute(
+      path: '/sign-up',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const SignUpPage(),
+    ),
+    GoRoute(
+      path: '/sign-in',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const SignInPage(),
     ),
   ],
 );

@@ -7,7 +7,7 @@ final ThemeData wabizDefaultTheme = ThemeData(
     backgroundColor: AppColors.white,
     type: BottomNavigationBarType.fixed,
     selectedItemColor: AppColors.black,
-    unselectedItemColor: AppColors.wabizGary,
+    unselectedItemColor: AppColors.wabizGray,
   ),
   appBarTheme: AppBarTheme(
     backgroundColor: AppColors.white,
@@ -17,7 +17,7 @@ final ThemeData wabizDefaultTheme = ThemeData(
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      side: BorderSide(color: AppColors.wabizGary[200]!),
+      side: BorderSide(color: AppColors.wabizGray[200]!),
       backgroundColor: AppColors.white,
       foregroundColor: AppColors.black,
       textStyle: TextStyle(
@@ -31,10 +31,14 @@ final ThemeData wabizDefaultTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(color: AppColors.wabizGary[200]!, width: 1.0),
+      borderSide: BorderSide(color: AppColors.wabizGray[200]!, width: 1.0),
     ),
     outlineBorder: BorderSide(color: AppColors.primary),
     border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: BorderSide(color: AppColors.primary, width: 1.0),
+    ),
+    focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(color: AppColors.primary, width: 1.0),
     ),
@@ -42,7 +46,7 @@ final ThemeData wabizDefaultTheme = ThemeData(
       fontSize: 16,
       fontFamily: 'Pretendard',
       fontWeight: FontWeight.w500,
-      color: AppColors.wabizGary[400]!,
+      color: AppColors.wabizGray[400]!,
     ),
   ),
   dialogTheme: DialogThemeData(
@@ -64,7 +68,7 @@ class AppColors extends Color {
 
   static const int _grayPrimaryValue = 0xFF848487;
 
-  static const MaterialColor wabizGary =
+  static const MaterialColor wabizGray =
       MaterialColor(_grayPrimaryValue, <int, Color>{
         50: Color(0xFFFEFBEE),
         100: Color(0xFFE5E5EA),

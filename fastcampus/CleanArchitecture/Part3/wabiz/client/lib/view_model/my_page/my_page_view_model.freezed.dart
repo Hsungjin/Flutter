@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MyPageState {
 
- bool? get loginState;
+ bool? get loginState; LoginModel? get loginModel;
 /// Create a copy of MyPageState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $MyPageStateCopyWith<MyPageState> get copyWith => _$MyPageStateCopyWithImpl<MyPa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MyPageState&&(identical(other.loginState, loginState) || other.loginState == loginState));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MyPageState&&(identical(other.loginState, loginState) || other.loginState == loginState)&&(identical(other.loginModel, loginModel) || other.loginModel == loginModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loginState);
+int get hashCode => Object.hash(runtimeType,loginState,loginModel);
 
 @override
 String toString() {
-  return 'MyPageState(loginState: $loginState)';
+  return 'MyPageState(loginState: $loginState, loginModel: $loginModel)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $MyPageStateCopyWith<$Res>  {
   factory $MyPageStateCopyWith(MyPageState value, $Res Function(MyPageState) _then) = _$MyPageStateCopyWithImpl;
 @useResult
 $Res call({
- bool? loginState
+ bool? loginState, LoginModel? loginModel
 });
 
 
-
+$LoginModelCopyWith<$Res>? get loginModel;
 
 }
 /// @nodoc
@@ -62,13 +62,26 @@ class _$MyPageStateCopyWithImpl<$Res>
 
 /// Create a copy of MyPageState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? loginState = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? loginState = freezed,Object? loginModel = freezed,}) {
   return _then(_self.copyWith(
 loginState: freezed == loginState ? _self.loginState : loginState // ignore: cast_nullable_to_non_nullable
-as bool?,
+as bool?,loginModel: freezed == loginModel ? _self.loginModel : loginModel // ignore: cast_nullable_to_non_nullable
+as LoginModel?,
   ));
 }
+/// Create a copy of MyPageState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LoginModelCopyWith<$Res>? get loginModel {
+    if (_self.loginModel == null) {
+    return null;
+  }
 
+  return $LoginModelCopyWith<$Res>(_self.loginModel!, (value) {
+    return _then(_self.copyWith(loginModel: value));
+  });
+}
 }
 
 
@@ -150,10 +163,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? loginState)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? loginState,  LoginModel? loginModel)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MyPageState() when $default != null:
-return $default(_that.loginState);case _:
+return $default(_that.loginState,_that.loginModel);case _:
   return orElse();
 
 }
@@ -171,10 +184,10 @@ return $default(_that.loginState);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? loginState)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? loginState,  LoginModel? loginModel)  $default,) {final _that = this;
 switch (_that) {
 case _MyPageState():
-return $default(_that.loginState);case _:
+return $default(_that.loginState,_that.loginModel);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +204,10 @@ return $default(_that.loginState);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? loginState)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? loginState,  LoginModel? loginModel)?  $default,) {final _that = this;
 switch (_that) {
 case _MyPageState() when $default != null:
-return $default(_that.loginState);case _:
+return $default(_that.loginState,_that.loginModel);case _:
   return null;
 
 }
@@ -206,10 +219,11 @@ return $default(_that.loginState);case _:
 
 
 class _MyPageState implements MyPageState {
-   _MyPageState({this.loginState});
+   _MyPageState({this.loginState, this.loginModel});
   
 
 @override final  bool? loginState;
+@override final  LoginModel? loginModel;
 
 /// Create a copy of MyPageState
 /// with the given fields replaced by the non-null parameter values.
@@ -221,16 +235,16 @@ _$MyPageStateCopyWith<_MyPageState> get copyWith => __$MyPageStateCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MyPageState&&(identical(other.loginState, loginState) || other.loginState == loginState));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MyPageState&&(identical(other.loginState, loginState) || other.loginState == loginState)&&(identical(other.loginModel, loginModel) || other.loginModel == loginModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loginState);
+int get hashCode => Object.hash(runtimeType,loginState,loginModel);
 
 @override
 String toString() {
-  return 'MyPageState(loginState: $loginState)';
+  return 'MyPageState(loginState: $loginState, loginModel: $loginModel)';
 }
 
 
@@ -241,11 +255,11 @@ abstract mixin class _$MyPageStateCopyWith<$Res> implements $MyPageStateCopyWith
   factory _$MyPageStateCopyWith(_MyPageState value, $Res Function(_MyPageState) _then) = __$MyPageStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool? loginState
+ bool? loginState, LoginModel? loginModel
 });
 
 
-
+@override $LoginModelCopyWith<$Res>? get loginModel;
 
 }
 /// @nodoc
@@ -258,14 +272,27 @@ class __$MyPageStateCopyWithImpl<$Res>
 
 /// Create a copy of MyPageState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? loginState = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? loginState = freezed,Object? loginModel = freezed,}) {
   return _then(_MyPageState(
 loginState: freezed == loginState ? _self.loginState : loginState // ignore: cast_nullable_to_non_nullable
-as bool?,
+as bool?,loginModel: freezed == loginModel ? _self.loginModel : loginModel // ignore: cast_nullable_to_non_nullable
+as LoginModel?,
   ));
 }
 
+/// Create a copy of MyPageState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LoginModelCopyWith<$Res>? get loginModel {
+    if (_self.loginModel == null) {
+    return null;
+  }
 
+  return $LoginModelCopyWith<$Res>(_self.loginModel!, (value) {
+    return _then(_self.copyWith(loginModel: value));
+  });
+}
 }
 
 // dart format on

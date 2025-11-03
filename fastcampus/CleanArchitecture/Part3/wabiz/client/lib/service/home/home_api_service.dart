@@ -1,6 +1,5 @@
 import 'package:client/service/home/home_api.dart';
 import 'package:client/shared/network_provider.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

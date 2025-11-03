@@ -393,7 +393,7 @@ class _CategoryPageState extends ConsumerState<CategoryPage> {
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color:
-                                                      AppColors.wabizGary[500]!,
+                                                      AppColors.wabizGray[500]!,
                                                 ),
                                               ),
                                               Gap(8),

@@ -47,13 +47,13 @@ class _HomePageState extends State<HomePage> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
                                   borderSide: BorderSide(
-                                    color: AppColors.wabizGary[100]!,
+                                    color: AppColors.wabizGray[100]!,
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
                                   borderSide: BorderSide(
-                                    color: AppColors.wabizGary[100]!,
+                                    color: AppColors.wabizGray[100]!,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 hintText: "새로운 일상이 필요하신가요?",
                                 suffixIcon: const Icon(Icons.search),
-                                suffixIconColor: AppColors.wabizGary[400],
+                                suffixIconColor: AppColors.wabizGray[400],
                               ),
                             ),
                           ),
@@ -239,7 +239,7 @@ class _HomePageState extends State<HomePage> {
                                           Text(
                                             project.owner ?? "세상에 없던 브랜드",
                                             style: TextStyle(
-                                              color: AppColors.wabizGary[500],
+                                              color: AppColors.wabizGray[500],
                                             ),
                                           ),
                                           const Gap(16),
