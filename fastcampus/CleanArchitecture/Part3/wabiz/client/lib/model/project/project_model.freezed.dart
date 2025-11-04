@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProjectModel implements DiagnosticableTreeMixin {
 
- List<ProjectItemModel> get projects;
+ List<ProjectItemModel> get data;
 /// Create a copy of ProjectModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +29,21 @@ $ProjectModelCopyWith<ProjectModel> get copyWith => _$ProjectModelCopyWithImpl<P
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProjectModel'))
-    ..add(DiagnosticsProperty('projects', projects));
+    ..add(DiagnosticsProperty('data', data));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProjectModel&&const DeepCollectionEquality().equals(other.projects, projects));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProjectModel&&const DeepCollectionEquality().equals(other.data, data));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(projects));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProjectModel(projects: $projects)';
+  return 'ProjectModel(data: $data)';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $ProjectModelCopyWith<$Res>  {
   factory $ProjectModelCopyWith(ProjectModel value, $Res Function(ProjectModel) _then) = _$ProjectModelCopyWithImpl;
 @useResult
 $Res call({
- List<ProjectItemModel> projects
+ List<ProjectItemModel> data
 });
 
 
@@ -71,9 +71,9 @@ class _$ProjectModelCopyWithImpl<$Res>
 
 /// Create a copy of ProjectModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? projects = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? data = null,}) {
   return _then(_self.copyWith(
-projects: null == projects ? _self.projects : projects // ignore: cast_nullable_to_non_nullable
+data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as List<ProjectItemModel>,
   ));
 }
@@ -159,10 +159,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ProjectItemModel> projects)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ProjectItemModel> data)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProjectModel() when $default != null:
-return $default(_that.projects);case _:
+return $default(_that.data);case _:
   return orElse();
 
 }
@@ -180,10 +180,10 @@ return $default(_that.projects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ProjectItemModel> projects)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ProjectItemModel> data)  $default,) {final _that = this;
 switch (_that) {
 case _ProjectModel():
-return $default(_that.projects);case _:
+return $default(_that.data);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +200,10 @@ return $default(_that.projects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ProjectItemModel> projects)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ProjectItemModel> data)?  $default,) {final _that = this;
 switch (_that) {
 case _ProjectModel() when $default != null:
-return $default(_that.projects);case _:
+return $default(_that.data);case _:
   return null;
 
 }
@@ -215,14 +215,14 @@ return $default(_that.projects);case _:
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _ProjectModel with DiagnosticableTreeMixin implements ProjectModel {
-  const _ProjectModel({final  List<ProjectItemModel> projects = const []}): _projects = projects;
+  const _ProjectModel({final  List<ProjectItemModel> data = const []}): _data = data;
   factory _ProjectModel.fromJson(Map<String, dynamic> json) => _$ProjectModelFromJson(json);
 
- final  List<ProjectItemModel> _projects;
-@override@JsonKey() List<ProjectItemModel> get projects {
-  if (_projects is EqualUnmodifiableListView) return _projects;
+ final  List<ProjectItemModel> _data;
+@override@JsonKey() List<ProjectItemModel> get data {
+  if (_data is EqualUnmodifiableListView) return _data;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_projects);
+  return EqualUnmodifiableListView(_data);
 }
 
 
@@ -240,21 +240,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProjectModel'))
-    ..add(DiagnosticsProperty('projects', projects));
+    ..add(DiagnosticsProperty('data', data));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProjectModel&&const DeepCollectionEquality().equals(other._projects, _projects));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProjectModel&&const DeepCollectionEquality().equals(other._data, _data));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_projects));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_data));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProjectModel(projects: $projects)';
+  return 'ProjectModel(data: $data)';
 }
 
 
@@ -265,7 +265,7 @@ abstract mixin class _$ProjectModelCopyWith<$Res> implements $ProjectModelCopyWi
   factory _$ProjectModelCopyWith(_ProjectModel value, $Res Function(_ProjectModel) _then) = __$ProjectModelCopyWithImpl;
 @override @useResult
 $Res call({
- List<ProjectItemModel> projects
+ List<ProjectItemModel> data
 });
 
 
@@ -282,9 +282,9 @@ class __$ProjectModelCopyWithImpl<$Res>
 
 /// Create a copy of ProjectModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? projects = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? data = null,}) {
   return _then(_ProjectModel(
-projects: null == projects ? _self._projects : projects // ignore: cast_nullable_to_non_nullable
+data: null == data ? _self._data : data // ignore: cast_nullable_to_non_nullable
 as List<ProjectItemModel>,
   ));
 }

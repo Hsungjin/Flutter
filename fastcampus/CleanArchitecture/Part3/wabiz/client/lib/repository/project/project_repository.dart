@@ -42,6 +42,11 @@ class ProjectRepository {
     final result = await projectService.getProjectByUserId(userId);
     return result;
   }
+
+  Future<ProjectModel> getProjectByProjectId(String id) async {
+    final result = await projectService.getProjectByProjectId(id);
+    return result;
+  }
 }
 
 @riverpod

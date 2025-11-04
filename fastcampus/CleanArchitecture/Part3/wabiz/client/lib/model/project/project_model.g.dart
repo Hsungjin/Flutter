@@ -8,15 +8,15 @@ part of 'project_model.dart';
 
 _ProjectModel _$ProjectModelFromJson(Map<String, dynamic> json) =>
     _ProjectModel(
-      projects:
-          (json['projects'] as List<dynamic>?)
+      data:
+          (json['data'] as List<dynamic>?)
               ?.map((e) => ProjectItemModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
     );
 
 Map<String, dynamic> _$ProjectModelToJson(_ProjectModel instance) =>
-    <String, dynamic>{'projects': instance.projects};
+    <String, dynamic>{'data': instance.data};
 
 _ProjectItemModel _$ProjectItemModelFromJson(Map<String, dynamic> json) =>
     _ProjectItemModel(

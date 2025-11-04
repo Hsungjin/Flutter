@@ -5,6 +5,7 @@ import 'package:client/views/login/sign_up_page.dart';
 import 'package:client/views/my_page/my_page.dart';
 import 'package:client/views/project/add_project_page.dart';
 import 'package:client/views/project/add_reward_page.dart';
+import 'package:client/views/project/project_detail_page.dart';
 import 'package:client/views/wabiz_app_shell.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -75,6 +76,14 @@ final router = GoRouter(
           },
         ),
       ],
+    ),
+    GoRoute(
+      path: '/detail',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) {
+        final project = state.extra as String;
+        return ProjectDetailPage(project: project);
+      },
     ),
   ],
 );

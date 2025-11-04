@@ -30,4 +30,7 @@ abstract class ProjectApiClient {
     @Path() String id,
     @Body() RewardItemModel body,
   );
+
+  @GET("/project/{id}")
+  Future<ProjectModel> getProjectByProjectId(@Path() String id);
 }

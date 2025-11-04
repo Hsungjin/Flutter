@@ -8,7 +8,7 @@ part 'project_model.freezed.dart';
 @freezed
 abstract class ProjectModel with _$ProjectModel {
   @JsonSerializable(fieldRename: FieldRename.snake)
-  const factory ProjectModel({@Default([]) List<ProjectItemModel> projects}) =
+  const factory ProjectModel({@Default([]) List<ProjectItemModel> data}) =
       _ProjectModel;
 
   factory ProjectModel.fromJson(Map<String, dynamic> json) =>
