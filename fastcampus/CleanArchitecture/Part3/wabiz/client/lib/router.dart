@@ -1,4 +1,5 @@
 import 'package:client/views/category/category_page.dart';
+import 'package:client/views/favorite/favorite_page.dart';
 import 'package:client/views/home/home_page.dart';
 import 'package:client/views/login/sign_in_page.dart';
 import 'package:client/views/login/sign_up_page.dart';
@@ -24,7 +25,7 @@ final router = GoRouter(
           currentIndex: switch (state.uri.path) {
             '/home' => 0,
             '/add' => 1,
-            '/subscribe' => 2,
+            '/favorite' => 2,
             '/my' => 3,
             _ => 0,
           },
@@ -44,6 +45,11 @@ final router = GoRouter(
               },
             ),
           ],
+        ),
+        GoRoute(
+          path: '/favorite',
+          parentNavigatorKey: _shellNavigatorKey,
+          builder: (context, state) => const FavoritePage(),
         ),
         GoRoute(
           path: '/my',

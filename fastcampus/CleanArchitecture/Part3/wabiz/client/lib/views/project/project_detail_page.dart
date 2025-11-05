@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:client/model/category/category_model.dart';
 import 'package:client/model/project/project_model.dart';
 import 'package:client/theme.dart';
+import 'package:client/view_model/favorite/favorite_view_model.dart';
 import 'package:client/view_model/project/project_view_model.dart';
 import 'package:client/views/project/detail/project_detail_widget.dart';
 import 'package:flutter/material.dart';
@@ -93,9 +95,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                 physics: !value
                                     ? NeverScrollableScrollPhysics()
                                     : BouncingScrollPhysics(),
-                                child: ProjectDetailWidget(
-                                  data: data,
-                                ),
+                                child: ProjectDetailWidget(data: data),
                               ),
                             ),
                             if (!value)
@@ -181,16 +181,23 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
           );
         },
       ),
-      bottomNavigationBar: _BottomAppBar(),
+      bottomNavigationBar: _BottomAppBar(projectItemModel: projectItemModel),
     );
   }
 }
 
-class _BottomAppBar extends StatelessWidget {
-  const _BottomAppBar({super.key});
+class _BottomAppBar extends ConsumerWidget {
+  final ProjectItemModel projectItemModel;
+
+  const _BottomAppBar({super.key, required this.projectItemModel});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final favorites = ref.watch(favoriteViewModelProvider);
+    final current = favorites.projects
+        .where((element) => element.id == projectItemModel.id)
+        .toList();
+
     return BottomAppBar(
       height: 84,
       color: AppColors.white,
@@ -202,12 +209,43 @@ class _BottomAppBar extends StatelessWidget {
           border: Border(top: BorderSide(color: AppColors.newBg)),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.favorite_border, size: 24),
-                Gap(12),
+                IconButton(
+                  onPressed: () {
+                    if (current.isNotEmpty) {
+                      ref
+                          .read(favoriteViewModelProvider.notifier)
+                          .removeItem(
+                            CategoryItemModel(id: projectItemModel.id),
+                          );
+                    } else {
+                      ref
+                          .read(favoriteViewModelProvider.notifier)
+                          .addItem(
+                            CategoryItemModel(
+                              id: projectItemModel.id,
+                              thumbnail: projectItemModel.thumbnail,
+                              description: projectItemModel.description,
+                              title: projectItemModel.title,
+                              owner: projectItemModel.owner,
+                              totalFunded: projectItemModel.totalFunded,
+                              waitlistCount: projectItemModel.waitlistCount,
+                              totalFundedCount:
+                                  projectItemModel.totalFundedCount,
+                            ),
+                          );
+                    }
+                  },
+                  icon: Icon(
+                    current.isNotEmpty ? Icons.favorite : Icons.favorite_border,
+                    size: 24,
+                    color: current.isNotEmpty ? Colors.red : AppColors.primary,
+                  ),
+                ),
                 Text("1만+"),
               ],
             ),

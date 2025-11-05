@@ -1,10 +1,21 @@
 import 'package:client/router.dart';
+import 'package:client/shared/shared_pref_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:client/theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const ProviderScope(child: MainApp()));
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final pref = await SharedPreferences.getInstance();
+
+  runApp(
+    ProviderScope(
+      overrides: [sharedPreferencesProvider.overrideWithValue(pref)],
+      child: MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {

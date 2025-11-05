@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:client/theme.dart';
 import 'package:client/view_model/category/category_view_model.dart';
+import 'package:client/view_model/favorite/favorite_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -312,12 +313,52 @@ class _CategoryPageState extends ConsumerState<CategoryPage> {
                                               Positioned(
                                                 right: 2,
                                                 top: 2,
-                                                child: IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    Icons.favorite_border,
-                                                    color: AppColors.bg,
-                                                  ),
+                                                child: Consumer(
+                                                  builder: (context, ref, child) {
+                                                    final favorites = ref.watch(
+                                                      favoriteViewModelProvider,
+                                                    );
+                                                    final current = favorites
+                                                        .projects
+                                                        .where(
+                                                          (element) =>
+                                                              element.id ==
+                                                              project.id,
+                                                        )
+                                                        .toList();
+                                                    return IconButton(
+                                                      onPressed: () {
+                                                        if (current
+                                                            .isNotEmpty) {
+                                                          ref
+                                                              .read(
+                                                                favoriteViewModelProvider
+                                                                    .notifier,
+                                                              )
+                                                              .removeItem(
+                                                                project,
+                                                              );
+                                                        } else {
+                                                          ref
+                                                              .read(
+                                                                favoriteViewModelProvider
+                                                                    .notifier,
+                                                              )
+                                                              .addItem(project);
+                                                        }
+                                                      },
+                                                      icon: Icon(
+                                                        current.isNotEmpty
+                                                            ? Icons.favorite
+                                                            : Icons
+                                                                  .favorite_border,
+                                                        color:
+                                                            current.isNotEmpty
+                                                            ? Colors.red
+                                                            : AppColors.bg,
+                                                      ),
+                                                    );
+                                                  },
                                                 ),
                                               ),
                                             ],

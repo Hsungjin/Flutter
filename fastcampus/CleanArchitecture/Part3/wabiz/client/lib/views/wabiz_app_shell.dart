@@ -37,7 +37,7 @@ class _WabizAppShellState extends ConsumerState<WabizAppShell> {
         }
         break;
       case 2:
-        GoRouter.of(context).go("/home");
+        GoRouter.of(context).go("/favorite");
         break;
       case 3:
         GoRouter.of(context).go("/my");
