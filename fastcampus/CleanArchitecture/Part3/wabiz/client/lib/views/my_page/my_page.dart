@@ -1,3 +1,4 @@
+import 'package:client/model/project/project_model.dart';
 import 'package:client/theme.dart';
 import 'package:client/view_model/login/login_view_model.dart';
 import 'package:client/view_model/my_page/my_page_view_model.dart';
@@ -145,38 +146,207 @@ class _MyPageState extends State<MyPage> {
                           }
                         },
                       ),
-                      Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 28,
-                            backgroundColor: AppColors.wabizGray[200]!,
-                            child: SvgPicture.asset(
-                              "assets/icons/featured_seasonal_and_gifts.svg",
-                              width: 28,
-                              height: 28,
-                              colorFilter: ColorFilter.mode(
-                                AppColors.white,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                          ),
-                          Gap(20),
-                          Text(
-                            "새로운 도전을\n시작해부세요",
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          Gap(20),
-                          Text(
-                            "개인 후원부터 제품, 콘텐츠, 서비스 출시, 성장까지 함께할게요.",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ],
+                      Consumer(
+                        builder: (context, ref, child) {
+                          final isLogin =
+                              ref.watch(myPageViewModelProvider).loginState ??
+                              false;
+                          if (!isLogin) {
+                            return _EmptyProjectList();
+                          }
+
+                          return FutureBuilder(
+                            future: ref
+                                .watch(myPageViewModelProvider.notifier)
+                                .fetchUserProjects(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                List<ProjectItemModel> lists =
+                                    snapshot.data ?? [];
+
+                                if (lists.isEmpty) {
+                                  return _EmptyProjectList();
+                                }
+
+                                return Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Gap(24),
+                                      Text("나의 프로젝트"),
+                                      Expanded(
+                                        child: ListView.builder(
+                                          itemCount: lists.length,
+                                          itemBuilder: (context, index) {
+                                            final project = lists[index];
+                                            return ListTile(
+                                              title: Text(
+                                                project.title ?? "",
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              leading: Text(project.type ?? ""),
+                                              subtitle: Text(
+                                                project.description ?? "",
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              trailing: PopupMenuButton(
+                                                itemBuilder: (context) => [
+                                                  PopupMenuItem(
+                                                    onTap: () {
+                                                      context.push(
+                                                        "/add/reward/${project.id}",
+                                                      );
+                                                    },
+                                                    child: Text("리워드 추가"),
+                                                  ),
+                                                  PopupMenuItem(
+                                                    onTap: () {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (context) {
+                                                          bool
+                                                          projectOpenState =
+                                                              project.isOpen ==
+                                                                  "open"
+                                                              ? true
+                                                              : false;
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                              "프로젝트 수정",
+                                                            ),
+                                                            content: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              children: [
+                                                                SwitchListTile.adaptive(
+                                                                  title: Text(
+                                                                    "프로젝트 오픈상태",
+                                                                  ),
+                                                                  value:
+                                                                      projectOpenState,
+                                                                  onChanged: (value) async {
+                                                                    await ref
+                                                                        .watch(
+                                                                          myPageViewModelProvider
+                                                                              .notifier,
+                                                                        )
+                                                                        .updateProjectOpenState(
+                                                                          project
+                                                                              .id
+                                                                              .toString(),
+                                                                          ProjectItemModel(
+                                                                            id: project.id,
+                                                                            isOpen:
+                                                                                value
+                                                                                ? "open"
+                                                                                : "close",
+                                                                          ),
+                                                                        );
+                                                                  },
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  context.pop();
+                                                                },
+                                                                child: Text(
+                                                                  "확인",
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    },
+                                                    child: Text("프로젝트 오픈상태 수정"),
+                                                  ),
+                                                  PopupMenuItem(
+                                                    onTap: () {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (context) => AlertDialog(
+                                                          title: Text(
+                                                            "프로젝트 삭제",
+                                                          ),
+                                                          content: Text(
+                                                            "프로젝트 삭제하시겠습니까?",
+                                                          ),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () async {
+                                                                final result = await ref
+                                                                    .watch(
+                                                                      myPageViewModelProvider
+                                                                          .notifier,
+                                                                    )
+                                                                    .deleteProject(
+                                                                      project.id
+                                                                          .toString(),
+                                                                    );
+                                                                if (result) {
+                                                                  if (context
+                                                                      .mounted) {
+                                                                    context
+                                                                        .pop();
+                                                                  }
+                                                                } else {
+                                                                  if (context
+                                                                      .mounted) {
+                                                                    showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder: (context) => AlertDialog(
+                                                                        title: Text(
+                                                                          "프로젝트 삭제 실패",
+                                                                        ),
+                                                                        content:
+                                                                            Text(
+                                                                              "프로젝트 삭제 실패",
+                                                                            ),
+                                                                      ),
+                                                                    );
+                                                                    context
+                                                                        .pop();
+                                                                  }
+                                                                }
+                                                              },
+                                                              child: Text(
+                                                                "삭제하기",
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Text("프로젝트 삭제"),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+
+                              if (snapshot.hasError) {
+                                return Center(
+                                  child: Text(snapshot.error.toString()),
+                                );
+                              }
+
+                              return Center(child: CircularProgressIndicator());
+                            },
+                          );
+                        },
                       ),
                       InkWell(
                         onTap: () {
@@ -218,6 +388,38 @@ class _MyPageState extends State<MyPage> {
           },
         ),
       ),
+    );
+  }
+}
+
+class _EmptyProjectList extends StatelessWidget {
+  const _EmptyProjectList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 28,
+          backgroundColor: AppColors.wabizGray[200]!,
+          child: SvgPicture.asset(
+            "assets/icons/featured_seasonal_and_gifts.svg",
+            width: 28,
+            height: 28,
+            colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),
+          ),
+        ),
+        Gap(20),
+        Text(
+          "새로운 도전을\n시작해부세요",
+          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
+        ),
+        Gap(20),
+        Text(
+          "개인 후원부터 제품, 콘텐츠, 서비스 출시, 성장까지 함께할게요.",
+          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+        ),
+      ],
     );
   }
 }

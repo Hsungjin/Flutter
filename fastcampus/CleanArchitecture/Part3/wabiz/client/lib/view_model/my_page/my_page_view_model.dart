@@ -1,5 +1,7 @@
 import 'package:client/model/login/login_model.dart';
+import 'package:client/model/project/project_model.dart';
 import 'package:client/repository/my_page/my_page_repository.dart';
+import 'package:client/shared/model/response_model.dart';
 import 'package:client/view_model/login/login_view_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -29,13 +31,31 @@ class MyPageViewModel extends _$MyPageViewModel {
     );
   }
 
-  fetchUserProjects() async {}
+  Future<List<ProjectItemModel>> fetchUserProjects() async {
+    final userId = state.loginModel?.id;
 
-  updateProject(String id) async {
-    await ref.watch(myPageRepositoryProvider).updateProjectOpenState(id);
+    final repository = ref.watch(myPageRepositoryProvider);
+    final result = await repository.getProjectByUserId(userId.toString());
+    return result.data;
   }
 
-  deleteProject(String id) async {
-    await ref.watch(myPageRepositoryProvider).deleteProject(id);
+  Future<bool> updateProjectOpenState(String id, ProjectItemModel body) async {
+    final repository = ref.watch(myPageRepositoryProvider);
+    final result = await repository.updateProjectOpenState(id, body);
+    if (result.status == "ok") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> deleteProject(String id) async {
+    final repository = ref.watch(myPageRepositoryProvider);
+    final result = await repository.deleteProject(id);
+    if (result.status == "ok") {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

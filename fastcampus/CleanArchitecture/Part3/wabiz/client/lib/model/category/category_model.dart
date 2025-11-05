@@ -37,7 +37,6 @@ abstract class CategoryItemModel with _$CategoryItemModel {
     String? isOpen,
     String? category,
     String? type,
-    String? projectType,
     @Default([]) List<int> image,
   }) = _CategoryItemModel;
 

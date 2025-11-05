@@ -101,7 +101,7 @@ final class FetchTypeTabsProvider
   }
 }
 
-String _$fetchTypeTabsHash() => r'1dca2d3f9c884ac0d7b860f54393b0749be5db83';
+String _$fetchTypeTabsHash() => r'de12f72e5fb98680f28db9de119e122aceee8870';
 
 @ProviderFor(fetchCategoryProjects)
 const fetchCategoryProjectsProvider = FetchCategoryProjectsFamily._();

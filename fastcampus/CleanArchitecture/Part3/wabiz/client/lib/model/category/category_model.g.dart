@@ -45,7 +45,6 @@ _CategoryItemModel _$CategoryItemModelFromJson(Map<String, dynamic> json) =>
       isOpen: json['is_open'] as String?,
       category: json['category'] as String?,
       type: json['type'] as String?,
-      projectType: json['project_type'] as String?,
       image:
           (json['image'] as List<dynamic>?)
               ?.map((e) => (e as num).toInt())
@@ -72,6 +71,5 @@ Map<String, dynamic> _$CategoryItemModelToJson(_CategoryItemModel instance) =>
       'is_open': instance.isOpen,
       'category': instance.category,
       'type': instance.type,
-      'project_type': instance.projectType,
       'image': instance.image,
     };
