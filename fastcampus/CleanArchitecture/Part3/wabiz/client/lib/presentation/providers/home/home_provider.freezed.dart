@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_view_model.dart';
+part of 'home_provider.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,20 +12,20 @@ part of 'home_view_model.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$HomeState {
+mixin _$HomeProviderState {
 
- List<HomeItemModel> get projects;
-/// Create a copy of HomeState
+ List<HomeEntity> get projects;
+/// Create a copy of HomeProviderState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$HomeStateCopyWith<HomeState> get copyWith => _$HomeStateCopyWithImpl<HomeState>(this as HomeState, _$identity);
+$HomeProviderStateCopyWith<HomeProviderState> get copyWith => _$HomeProviderStateCopyWithImpl<HomeProviderState>(this as HomeProviderState, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&const DeepCollectionEquality().equals(other.projects, projects));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeProviderState&&const DeepCollectionEquality().equals(other.projects, projects));
 }
 
 
@@ -34,18 +34,18 @@ int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(
 
 @override
 String toString() {
-  return 'HomeState(projects: $projects)';
+  return 'HomeProviderState(projects: $projects)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $HomeStateCopyWith<$Res>  {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
+abstract mixin class $HomeProviderStateCopyWith<$Res>  {
+  factory $HomeProviderStateCopyWith(HomeProviderState value, $Res Function(HomeProviderState) _then) = _$HomeProviderStateCopyWithImpl;
 @useResult
 $Res call({
- List<HomeItemModel> projects
+ List<HomeEntity> projects
 });
 
 
@@ -53,27 +53,27 @@ $Res call({
 
 }
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res>
-    implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._self, this._then);
+class _$HomeProviderStateCopyWithImpl<$Res>
+    implements $HomeProviderStateCopyWith<$Res> {
+  _$HomeProviderStateCopyWithImpl(this._self, this._then);
 
-  final HomeState _self;
-  final $Res Function(HomeState) _then;
+  final HomeProviderState _self;
+  final $Res Function(HomeProviderState) _then;
 
-/// Create a copy of HomeState
+/// Create a copy of HomeProviderState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? projects = null,}) {
   return _then(_self.copyWith(
 projects: null == projects ? _self.projects : projects // ignore: cast_nullable_to_non_nullable
-as List<HomeItemModel>,
+as List<HomeEntity>,
   ));
 }
 
 }
 
 
-/// Adds pattern-matching-related methods to [HomeState].
-extension HomeStatePatterns on HomeState {
+/// Adds pattern-matching-related methods to [HomeProviderState].
+extension HomeProviderStatePatterns on HomeProviderState {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -86,10 +86,10 @@ extension HomeStatePatterns on HomeState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _HomeState value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _HomeProviderState value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _HomeState() when $default != null:
+case _HomeProviderState() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -108,10 +108,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _HomeState value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _HomeProviderState value)  $default,){
 final _that = this;
 switch (_that) {
-case _HomeState():
+case _HomeProviderState():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -129,10 +129,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _HomeState value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _HomeProviderState value)?  $default,){
 final _that = this;
 switch (_that) {
-case _HomeState() when $default != null:
+case _HomeProviderState() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -150,9 +150,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<HomeItemModel> projects)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<HomeEntity> projects)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _HomeState() when $default != null:
+case _HomeProviderState() when $default != null:
 return $default(_that.projects);case _:
   return orElse();
 
@@ -171,9 +171,9 @@ return $default(_that.projects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<HomeItemModel> projects)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<HomeEntity> projects)  $default,) {final _that = this;
 switch (_that) {
-case _HomeState():
+case _HomeProviderState():
 return $default(_that.projects);case _:
   throw StateError('Unexpected subclass');
 
@@ -191,9 +191,9 @@ return $default(_that.projects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<HomeItemModel> projects)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<HomeEntity> projects)?  $default,) {final _that = this;
 switch (_that) {
-case _HomeState() when $default != null:
+case _HomeProviderState() when $default != null:
 return $default(_that.projects);case _:
   return null;
 
@@ -205,29 +205,29 @@ return $default(_that.projects);case _:
 /// @nodoc
 
 
-class _HomeState implements HomeState {
-   _HomeState({final  List<HomeItemModel> projects = const []}): _projects = projects;
+class _HomeProviderState implements HomeProviderState {
+   _HomeProviderState({final  List<HomeEntity> projects = const []}): _projects = projects;
   
 
- final  List<HomeItemModel> _projects;
-@override@JsonKey() List<HomeItemModel> get projects {
+ final  List<HomeEntity> _projects;
+@override@JsonKey() List<HomeEntity> get projects {
   if (_projects is EqualUnmodifiableListView) return _projects;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_projects);
 }
 
 
-/// Create a copy of HomeState
+/// Create a copy of HomeProviderState
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$HomeStateCopyWith<_HomeState> get copyWith => __$HomeStateCopyWithImpl<_HomeState>(this, _$identity);
+_$HomeProviderStateCopyWith<_HomeProviderState> get copyWith => __$HomeProviderStateCopyWithImpl<_HomeProviderState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&const DeepCollectionEquality().equals(other._projects, _projects));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeProviderState&&const DeepCollectionEquality().equals(other._projects, _projects));
 }
 
 
@@ -236,18 +236,18 @@ int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(
 
 @override
 String toString() {
-  return 'HomeState(projects: $projects)';
+  return 'HomeProviderState(projects: $projects)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory _$HomeStateCopyWith(_HomeState value, $Res Function(_HomeState) _then) = __$HomeStateCopyWithImpl;
+abstract mixin class _$HomeProviderStateCopyWith<$Res> implements $HomeProviderStateCopyWith<$Res> {
+  factory _$HomeProviderStateCopyWith(_HomeProviderState value, $Res Function(_HomeProviderState) _then) = __$HomeProviderStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<HomeItemModel> projects
+ List<HomeEntity> projects
 });
 
 
@@ -255,19 +255,19 @@ $Res call({
 
 }
 /// @nodoc
-class __$HomeStateCopyWithImpl<$Res>
-    implements _$HomeStateCopyWith<$Res> {
-  __$HomeStateCopyWithImpl(this._self, this._then);
+class __$HomeProviderStateCopyWithImpl<$Res>
+    implements _$HomeProviderStateCopyWith<$Res> {
+  __$HomeProviderStateCopyWithImpl(this._self, this._then);
 
-  final _HomeState _self;
-  final $Res Function(_HomeState) _then;
+  final _HomeProviderState _self;
+  final $Res Function(_HomeProviderState) _then;
 
-/// Create a copy of HomeState
+/// Create a copy of HomeProviderState
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? projects = null,}) {
-  return _then(_HomeState(
+  return _then(_HomeProviderState(
 projects: null == projects ? _self._projects : projects // ignore: cast_nullable_to_non_nullable
-as List<HomeItemModel>,
+as List<HomeEntity>,
   ));
 }
 

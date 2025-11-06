@@ -1,6 +1,6 @@
 import 'package:client/views/category/category_page.dart';
 import 'package:client/views/favorite/favorite_page.dart';
-import 'package:client/views/home/home_page.dart';
+import 'package:client/presentation/pages/home/home_page.dart';
 import 'package:client/views/login/sign_in_page.dart';
 import 'package:client/views/login/sign_up_page.dart';
 import 'package:client/views/my_page/my_page.dart';

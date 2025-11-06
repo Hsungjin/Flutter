@@ -1,4 +1,4 @@
-import 'package:client/model/home/home_model.dart';
+import 'package:client/data/model/home/home_model.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 

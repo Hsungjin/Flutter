@@ -1,7 +1,8 @@
 import 'dart:convert';
 
+import 'package:client/domain/use_cases/home/fetch_home_categories.dart';
 import 'package:client/theme.dart';
-import 'package:client/view_model/home/home_view_model.dart';
+import 'package:client/presentation/providers/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -146,7 +147,9 @@ class _HomePageState extends State<HomePage> {
                   // final project =
                   //     ref.watch(homeViewModelProvider.notifier).fetchHomeData();
 
-                  final homeData = ref.watch(fetchHomeProjectProvider);
+                  // final homeData = ref.watch(fetchHomeProjectsProvider);
+
+                  final homeData = ref.watch(homeProviderProvider);
 
                   return homeData.when(
                     data: (data) {
@@ -156,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                             Text("정보가 없습니다."),
                             TextButton(
                               onPressed: () {
-                                ref.invalidate(fetchHomeProjectProvider);
+                                ref.invalidate(homeProviderProvider);
                               },
                               child: Text("새로고침"),
                             ),
@@ -279,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                           const Gap(8),
                           TextButton(
                             onPressed: () {
-                              ref.invalidate(fetchHomeProjectProvider);
+                              ref.invalidate(homeProviderProvider);
                             },
                             child: const Text("다시 시도"),
                           ),

@@ -1,49 +1,7 @@
-import 'package:client/model/home/home_model.dart';
-import 'package:client/repository/home/home_repository.dart';
-import 'package:client/shared/model/category.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:client/domain/entitiy/shared/category.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'home_view_model.g.dart';
-part 'home_view_model.freezed.dart';
-
-@freezed
-abstract class HomeState with _$HomeState {
-  factory HomeState({@Default([]) List<HomeItemModel> projects}) = _HomeState;
-}
-
-@riverpod
-class HomeViewModel extends _$HomeViewModel {
-  late final HomeRepository homeRepository;
-
-  @override
-  HomeState? build() {
-    homeRepository = ref.watch(homeRepositoryProvider);
-    return null;
-  }
-
-  void update(List<HomeItemModel> projects) {
-    state = state?.copyWith(projects: [...projects]);
-  }
-
-  Future<HomeModel?> fetchHomeData() async {
-    final result = await homeRepository.getHomeProjects();
-    update(result.projects);
-    return result;
-  }
-}
-
-@riverpod
-Future<HomeModel> fetchHomeProject(Ref ref) async {
-  try {
-    final result = await ref
-        .watch(homeViewModelProvider.notifier)
-        .fetchHomeData();
-    return result ?? HomeModel();
-  } catch (e) {
-    throw HomeModel();
-  }
-}
+part 'fetch_home_categories.g.dart';
 
 @riverpod
 Future<List<ProjectCategory>> fetchHomeCategories(Ref ref) async {

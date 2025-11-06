@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_repository.dart';
+part of 'home_repository_impl.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -13,8 +13,13 @@ part of 'home_repository.dart';
 const homeRepositoryProvider = HomeRepositoryProvider._();
 
 final class HomeRepositoryProvider
-    extends $FunctionalProvider<HomeRepository, HomeRepository, HomeRepository>
-    with $Provider<HomeRepository> {
+    extends
+        $FunctionalProvider<
+          HomeRepositoryImpl,
+          HomeRepositoryImpl,
+          HomeRepositoryImpl
+        >
+    with $Provider<HomeRepositoryImpl> {
   const HomeRepositoryProvider._()
     : super(
         from: null,
@@ -31,21 +36,22 @@ final class HomeRepositoryProvider
 
   @$internal
   @override
-  $ProviderElement<HomeRepository> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $ProviderElement<HomeRepositoryImpl> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
-  HomeRepository create(Ref ref) {
+  HomeRepositoryImpl create(Ref ref) {
     return homeRepository(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(HomeRepository value) {
+  Override overrideWithValue(HomeRepositoryImpl value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<HomeRepository>(value),
+      providerOverride: $SyncValueProvider<HomeRepositoryImpl>(value),
     );
   }
 }
 
-String _$homeRepositoryHash() => r'a88e9ca836f92888d8f6e8950b71c70c56816ab1';
+String _$homeRepositoryHash() => r'b38b01b7b8f4669ca56f8905bea9ec0315da238e';
